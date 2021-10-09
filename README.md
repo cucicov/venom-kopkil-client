@@ -1,22 +1,42 @@
-# client
+# Vue Heroku Boilerplate
 
-> A Vue.js project
+![logo](https://repository-images.githubusercontent.com/238940698/6cba0b80-49bd-11ea-932b-d0952d3d59e0)
 
-## Build Setup
+- Vue 2
+- Vue-CLI 3
+- Node, Express
 
-``` bash
-# install dependencies
-npm install
+## Getting Started
 
-# serve with hot reload at localhost:8080
-npm run dev
+Clone project and enter in folder:
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+```
+cd vue-heroku-boilerplate
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-"# venom-kopkil-client" 
+Run npm install:
+
+```
+npm i
+```
+Enjoy:
+
+```
+npm run serve
+```
+
+## Built With
+
+* [Vue CLI](https://cli.vuejs.org/) - Standard Tooling for Vue.js Development
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning.
+
+## Authors ✨
+
+* **guillaumeduhan** - *Initial work* - [Github](https://github.com/guillaumeduhan)
+
+## License
+
+This project is licensed under the MIT License.
