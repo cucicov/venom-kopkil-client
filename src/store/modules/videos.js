@@ -23,8 +23,8 @@ const actions = {
                if (data && data.length > 0) {
                    for (let i = 0; i < data.length; i++) {
                        payload.videoIds.push({
-                           id : data[0]._id,
-                           name: data[0].name
+                           id : data[i]._id,
+                           name: data[i].name
                        })
                    }
                }
