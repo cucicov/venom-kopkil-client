@@ -9,7 +9,7 @@ import store from './store'
 Vue.config.productionTip = false
 
 Vue.axios = Vue.prototype.$http = axios.create({
-  baseURL: 'http://localhost:8081/api'
+  baseURL: 'https://venom-kopkil-server.herokuapp.com'
 })
 
 new Vue({
