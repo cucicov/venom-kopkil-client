@@ -1,14 +1,18 @@
 <template>
   <div id="app">
-    <img alt="sss" src="./assets/smile.png">
-    <router-view/>
+    <img alt="Vue logo" src="./../assets/logo.png">
+    <HelloWorld msg="Hello Heroku"/>
   </div>
 </template>
 
 <script>
+import HelloWorld from './../components/HelloWorld.vue'
 
 export default {
-  name: 'App'
+  name: 'OldHomePage',
+  components: {
+    HelloWorld
+  }
 }
 </script>
 
