@@ -1,18 +1,22 @@
 <template>
   <div>
-    <h2>Home Page</h2>
-    <select v-model="activeClass" @change="getVideosByClass()">
-      <option v-for="option in options" v-bind:value="option.key" v-bind:key="option.key">
-        {{ option.text }}
-      </option>
-    </select>
+    <div class="first-header-wrapper">
+      <div class="first-header-title">copiii povestesc istoria</div>
+    </div>
+<!--    drop box with all classes-->
+<!--    <select v-model="activeClass" @change="getVideosByClass()">-->
+<!--      <option v-for="option in options" v-bind:value="option.key" v-bind:key="option.key">-->
+<!--        {{ option.text }}-->
+<!--      </option>-->
+<!--    </select>-->
 
-    <ul id="videos">
-      <li v-for="video in videos" :key="video.id">
-        {{ video.name }}
-      </li>
-      <p>{{activeClass}}</p>
-    </ul>
+<!--    list of the videos for the selected class-->
+<!--    <ul id="videos">-->
+<!--      <li v-for="video in videos" :key="video.id">-->
+<!--        {{ video.name }}-->
+<!--      </li>-->
+<!--      <p>{{activeClass}}</p>-->
+<!--    </ul>-->
   </div>
 </template>
 
@@ -55,4 +59,22 @@ export default {
 </script>
 
 <style>
+.first-header-wrapper {
+  display:flex;
+  background: #F2B4B4;
+}
+
+.first-header-title {
+  font-family: 'Matter', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 140px;
+  line-height: 140px;
+  /*text-transform: uppercase;*/
+  width: 81px;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 </style>
