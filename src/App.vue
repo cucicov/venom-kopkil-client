@@ -44,7 +44,8 @@ export default {
 <!--<meta property="og:image:width" content="1920" />-->
 <!--<meta property="og:image:height" content="1080" />-->
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+/*font-family: 'DM Sans', sans-serif;*/
 
 @font-face {
   font-family: "Matter";
@@ -53,6 +54,10 @@ export default {
 html, body {
   margin: 0;
   padding: 0;
+  font-family: 'Matter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 #app {
@@ -60,6 +65,6 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000;
 }
 </style>

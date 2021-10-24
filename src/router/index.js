@@ -16,7 +16,11 @@ export default new Router({
             component: HomePage,
         },
         {
-            path: '/gg',
+            path: '/courses',
+            component: OldHomePage
+        },
+        {
+            path: '/team',
             component: OldHomePage
         },
         {
