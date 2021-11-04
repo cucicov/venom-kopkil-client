@@ -30,6 +30,72 @@
     <div class="first-content-bg">
       <div class="first-content-wrapper">
         <div class="first-content-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+       <!-- TODO: here use for? -->
+        <v-expansion-panels accordion multiple v-model="panelcontentvideos">
+          <v-expansion-panel expand elevation-0>
+            <div class="header-top-line"></div>
+            <v-expansion-panel-header>
+              Semestrul I
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <div class="first-content-videos-container">
+                  <div v-for="video in videos1" :key="video.id">
+
+                    <div v-if="isMobile()">
+                      <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
+                             max-height="190"
+                             max-width="260">
+                        <div class="play-image" v-on:click="gotoVideo">&#9658;</div>
+                      </v-img>
+                    </div>
+                    <div v-else>
+                      <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
+                             max-height="190"
+                             max-width="320">
+                        <div class="play-image" v-on:click="gotoVideo">&#9658;</div>
+                      </v-img>
+                    </div>
+
+                    <div class="first-content-video-title">
+                      {{ video.title }}
+                    </div>
+                  </div>
+              </div>
+            </v-expansion-panel-content>
+
+          </v-expansion-panel>
+          <v-expansion-panel elevation-0>
+            <div class="header-top-line"></div>
+            <v-expansion-panel-header>
+              Semestrul II
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <div class="first-content-videos-container">
+                <div v-for="video in videos2" :key="video.id">
+
+                  <div v-if="isMobile()">
+                    <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
+                           max-height="190"
+                           max-width="260">
+                      <div class="play-image" v-on:click="gotoVideo">&#9658;</div>
+                    </v-img>
+                  </div>
+                  <div v-else>
+                    <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
+                           max-height="190"
+                           max-width="320">
+                      <div class="play-image" v-on:click="gotoVideo">&#9658;</div>
+                    </v-img>
+                  </div>
+
+                  <div class="first-content-video-title">
+                    {{ video.title }}
+                  </div>
+                </div>
+              </div>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </div>
     </div>
 
@@ -51,11 +117,9 @@
       <div class="first-footer-team-content">
 
         <div class="first-footer-team-item" v-for="item in team" :key="item.id">
-          <v-img
-              :lazy-src="item.lazyUrl"
-              min-height="190"
-              max-width="190"
-              :src="item.url">
+          <v-img :lazy-src="item.lazyUrl" :src="item.url"
+              max-height="190"
+              max-width="190">
           </v-img>
           <div class="first-footer-team-item-name">
             {{ item.name }}
@@ -80,6 +144,7 @@ export default {
   name: 'HomePage',
   data() {
     return {
+      panelcontentvideos: [0], // keep only first panel expanded.
       activeClass: 1,
       newsletter_email: '',
       options: [
@@ -117,16 +182,74 @@ export default {
     }
   },
   computed: {
-    videos() {
-      return this.$store.getters.videoIds;
+    videos1() {
+      return this.$store.getters.videosSem1;
+      // return [
+      //   {
+      //     id: 1,
+      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+      //     title: "video title 1"
+      //   },
+      //   {
+      //     id: 2,
+      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+      //     title: "video title 2"
+      //   },
+      //   {
+      //     id: 3,
+      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+      //     title: "video title 3"
+      //   }
+      // ]
+    },
+    videos2() {
+      return this.$store.getters.videosSem2;
+      // return [
+      //   {
+      //     id: 1,
+      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+      //     title: "video title 1"
+      //   },
+      //   {
+      //     id: 2,
+      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+      //     title: "video title 2"
+      //   },
+      //   {
+      //     id: 3,
+      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+      //     title: "video title 3"
+      //   },
+      //   {
+      //     id: 4,
+      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+      //     title: "video title 3"
+      //   },
+      //   {
+      //     id: 5,
+      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+      //     title: "video title 3"
+      //   }
+      // ]
     }
   },
   methods: {
+    isMobile() {
+      if(screen.width <= 760 ) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    },
     gotoCourses: function() {
       this.$router.push('/courses');
     },
     gotoTeam: function() {
       this.$router.push('/team');
+    },
+    gotoVideo: function() {
+      this.$router.push('/video');
     },
     getVideosByClass: function () {
       const vm = this;
@@ -150,10 +273,10 @@ export default {
 <style>
 @media only screen and (max-width: 768px) {
   .first-header-wrapper {
-    padding: 20px;
+    padding: 20px 20px 180px 20px;
   }
   .first-header-courses-wrapper {
-    padding: 40px 20px 0px 20px;
+    padding: 0px 20px 0px 20px;
   }
   .first-content-wrapper {
     margin: 0px 20px 0px 20px;
@@ -170,13 +293,16 @@ export default {
   .first-footer-team-content {
     justify-content: space-around;
   }
+  .v-expansion-panel-content__wrap {
+    padding: 0px !important;
+  }
 }
 @media only screen and (min-width: 769px) {
   .first-header-wrapper {
-    padding: 80px;
+    padding: 80px 80px 200px 80px;
   }
   .first-header-courses-wrapper {
-    padding: 120px 80px 0px 80px;
+    padding: 0px 80px 0px 80px;
   }
   .first-content-wrapper {
     margin: 0px 80px 0px 80px;
@@ -193,12 +319,18 @@ export default {
   .first-footer-team-content {
     justify-content: space-between;
   }
+  .header-top-line {
+    width: 300px;
+  }
 }
 
 .first-header-wrapper {
   display:flex;
   background: #F2B4B4;
+  background-image: url("../assets/mainbg.png");
   flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .first-header-logo {
@@ -256,7 +388,6 @@ export default {
 
 .first-header-courses-wrapper {
   display:flex;
-  background: #F2B4B4;
   flex-direction: row;
 }
 
@@ -272,6 +403,7 @@ export default {
   line-height: 43px;
   padding: 20px;
   flex-basis: 100%;
+  margin-top: -100px;
 }
 
 .first-header-courses-title {
@@ -291,7 +423,7 @@ export default {
 }
 
 .first-content-bg {
-  background: lightcyan none;
+  background: #F4F9F9 none;
 }
 
 .first-content-wrapper {
@@ -312,7 +444,7 @@ export default {
 }
 
 .first-newsletter-wrapper {
-  background: lightcyan none;
+  background: #F4F9F9 none;
 }
 
 .first-newsletter-title {
@@ -357,7 +489,7 @@ export default {
 .first-footer-team {
   display: flex;
   flex-direction: column;
-  background: lightcyan none;
+  background: #F4F9F9 none;
 }
 
 .first-footer-team-title {
@@ -373,7 +505,7 @@ export default {
 }
 
 .first-footer-partners {
-  background: lightcyan none;
+  background: #F4F9F9 none;
   padding: 80px;
   font-weight: 700;
   font-size: 36px;
@@ -402,6 +534,26 @@ export default {
   margin: 40px 20px;
 }
 
+.first-video-thumbnail-main-image {
+  outline: 10px solid #F4F9F9;
+  outline-offset: -10px;
+}
+
+.play-image {
+  height: 54px;
+  width: 54px;
+  background: #1B2CC1;
+  position: relative;
+  margin-left: auto;
+  margin-top: 136px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color:white;
+  border: 2px solid #F4F9F9;
+}
+
 .first-footer-team-item-name {
   font-size: 18px;
   font-style: normal;
@@ -422,4 +574,51 @@ export default {
   text-align: left;
 }
 
+.v-expansion-panel-header__icon {
+  margin-left: auto;
+}
+
+.theme--light.v-expansion-panels .v-expansion-panel {
+  background-color: transparent !important;
+}
+
+.v-expansion-panel::before {
+  box-shadow: none !important;
+}
+
+.v-expansion-panel:not(:first-child):after {
+  border-top: 0px !important;
+}
+
+/* TODO: clarify overwriting vuetify styles */
+.theme--light.v-expansion-panels .v-expansion-panel-header .v-expansion-panel-header__icon .v-icon {
+  color: #1B2CC1 !important;
+}
+
+.v-expansion-panel-header {
+  padding: 20px !important;
+  color: #1B2CC1 !important;
+}
+
+.header-top-line {
+  margin: 0px 20px -10px 20px;
+  height: 1px;
+  background-color: #1B2CC1;
+}
+
+.first-content-videos-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.first-content-video-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: left;
+  margin: 20px 0px 50px 10px;
+}
 </style>

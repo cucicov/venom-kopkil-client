@@ -24,6 +24,10 @@ export default new Router({
             component: OldHomePage
         },
         {
+            path: '/video',
+            component: OldHomePage
+        },
+        {
             path: '*',
             redirect: '/'
         },
