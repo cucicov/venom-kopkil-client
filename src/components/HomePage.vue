@@ -30,7 +30,6 @@
     <div class="first-content-bg">
       <div class="first-content-wrapper">
         <div class="first-content-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
-       <!-- TODO: here use for? -->
         <v-expansion-panels accordion multiple v-model="panelcontentvideos">
           <v-expansion-panel expand elevation-0>
             <div class="header-top-line"></div>
@@ -45,14 +44,14 @@
                       <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
                              max-height="190"
                              max-width="260">
-                        <div class="play-image" v-on:click="gotoVideo">&#9658;</div>
+                        <div class="play-image" v-on:click="gotoVideo(video.id)">&#9658;</div>
                       </v-img>
                     </div>
                     <div v-else>
                       <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
                              max-height="190"
                              max-width="320">
-                        <div class="play-image" v-on:click="gotoVideo">&#9658;</div>
+                        <div class="play-image" v-on:click="gotoVideo(video.id)">&#9658;</div>
                       </v-img>
                     </div>
 
@@ -77,14 +76,14 @@
                     <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
                            max-height="190"
                            max-width="260">
-                      <div class="play-image" v-on:click="gotoVideo">&#9658;</div>
+                      <div class="play-image" v-on:click="gotoVideo(video.id)">&#9658;</div>
                     </v-img>
                   </div>
                   <div v-else>
                     <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
                            max-height="190"
                            max-width="320">
-                      <div class="play-image" v-on:click="gotoVideo">&#9658;</div>
+                      <div class="play-image" v-on:click="gotoVideo(video.id)">&#9658;</div>
                     </v-img>
                   </div>
 
@@ -132,16 +131,19 @@
       </div>
     </div>
 
-    <div class="first-footer-partners">
-      <div>AFCN</div>
-    </div>
+    <Footer/>
 
   </div>
 </template>
 
 <script>
+import Footer from './Footer'
+
 export default {
   name: 'HomePage',
+  components: {
+    Footer
+  },
   data() {
     return {
       panelcontentvideos: [0], // keep only first panel expanded.
@@ -184,53 +186,9 @@ export default {
   computed: {
     videos1() {
       return this.$store.getters.videosSem1;
-      // return [
-      //   {
-      //     id: 1,
-      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
-      //     title: "video title 1"
-      //   },
-      //   {
-      //     id: 2,
-      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
-      //     title: "video title 2"
-      //   },
-      //   {
-      //     id: 3,
-      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
-      //     title: "video title 3"
-      //   }
-      // ]
     },
     videos2() {
       return this.$store.getters.videosSem2;
-      // return [
-      //   {
-      //     id: 1,
-      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
-      //     title: "video title 1"
-      //   },
-      //   {
-      //     id: 2,
-      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
-      //     title: "video title 2"
-      //   },
-      //   {
-      //     id: 3,
-      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
-      //     title: "video title 3"
-      //   },
-      //   {
-      //     id: 4,
-      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
-      //     title: "video title 3"
-      //   },
-      //   {
-      //     id: 5,
-      //     thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
-      //     title: "video title 3"
-      //   }
-      // ]
     }
   },
   methods: {
@@ -248,8 +206,8 @@ export default {
     gotoTeam: function() {
       this.$router.push('/team');
     },
-    gotoVideo: function() {
-      this.$router.push('/video');
+    gotoVideo: function(videoId) {
+      this.$router.push({ path: `/video/${this.activeClass}/${videoId}` });
     },
     getVideosByClass: function () {
       const vm = this;
@@ -258,13 +216,12 @@ export default {
       }
       this.$store.dispatch('loadVideos', payload)
         .then(() => {
-          console.log('found videos for class: ' + vm.activeClass);
-          console.log(this.$store.getters.videoIds);
+          console.log(payload.videos.length + ' found videos for class: ' + vm.activeClass);
         });
     }
   },
   mounted: function() {
-    console.log('Component has been created!');
+    console.log('Home page component has been created!');
     this.getVideosByClass();
   }
 }
@@ -276,16 +233,16 @@ export default {
     padding: 20px 20px 180px 20px;
   }
   .first-header-courses-wrapper {
-    padding: 0px 20px 0px 20px;
+    padding: 0 20px 0 20px;
   }
   .first-content-wrapper {
-    margin: 0px 20px 0px 20px;
+    margin: 0 20px 0 20px;
   }
   .first-footer-team {
-    padding: 80px 20px 0px 20px;
+    padding: 80px 20px 0 20px;
   }
   .first-footer-team-content {
-    margin: 0px 20px 20px 20px;
+    margin: 0 20px 20px 20px;
   }
   .first-newsletter-email-wrapper input {
     padding: 5px 10px;
@@ -294,7 +251,7 @@ export default {
     justify-content: space-around;
   }
   .v-expansion-panel-content__wrap {
-    padding: 0px !important;
+    padding: 0 !important;
   }
 }
 @media only screen and (min-width: 769px) {
@@ -302,16 +259,16 @@ export default {
     padding: 80px 80px 200px 80px;
   }
   .first-header-courses-wrapper {
-    padding: 0px 80px 0px 80px;
+    padding: 0 80px 0 80px;
   }
   .first-content-wrapper {
-    margin: 0px 80px 0px 80px;
+    margin: 0 80px 0 80px;
   }
   .first-footer-team {
-    padding: 80px 80px 0px 80px;
+    padding: 80px 80px 0 80px;
   }
   .first-footer-team-content {
-    margin: 0px 80px 80px 80px;
+    margin: 0 80px 80px 80px;
   }
   .first-newsletter-email-wrapper input {
     padding: 15px 20px;
@@ -326,11 +283,9 @@ export default {
 
 .first-header-wrapper {
   display:flex;
-  background: #F2B4B4;
-  background-image: url("../assets/mainbg.png");
   flex-direction: column;
   background-size: cover;
-  background-repeat: no-repeat;
+  background: #F2B4B4 url("../assets/mainbg.png") no-repeat;
 }
 
 .first-header-logo {
@@ -502,15 +457,6 @@ export default {
   font-size: 36px;
   line-height: 43px;
   padding: 20px;
-}
-
-.first-footer-partners {
-  background: #F4F9F9 none;
-  padding: 80px;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 43px;
-  color: #1B2CC1;
 }
 
 .first-footer-team-body {

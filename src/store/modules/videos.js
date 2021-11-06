@@ -1,7 +1,8 @@
 import Vue from 'vue'
 
 const state = {
-    activeClass: 5,
+    activeClass: -1,
+    activeVideo: -1,
     videosSem1: [
         {
             id: 1,
@@ -36,6 +37,7 @@ const state = {
 
 const getters = {
     activeClass: state => state.activeClass,
+    activeVideo: state => state.activeVideo,
     videosSem1: state => state.videosSem1,
     videosSem2: state => state.videosSem2,
     videosOther: state => state.videosOther
@@ -50,11 +52,6 @@ const actions = {
 
                if (data && data.length > 0) {
                    for (let i = 0; i < data.length; i++) {
-                       console.log("_id: " + data[i]._id);
-                       console.log("fullVideoId: " + data[i].fullVideoId);
-                       console.log("title: " + data[i].title);
-                       console.log("thumbnail: " + data[i].thumbnail);
-                       console.log("semester: " + data[i].semester);
                        payload.videos.push({
                            id : data[i]._id,
                            fullVideoId: data[i].fullvideoid,
@@ -66,8 +63,10 @@ const actions = {
                }
                commit('loadVideos', payload);
             });
-        console.log('classOf:'+payload.classOf);
-
+    },
+    setActiveVideo({commit}, payload) {
+        commit('updateActiveClass', payload.activeClass);
+        commit('updateActiveVideo', payload.activeVideoId);
     }
 }
 
@@ -80,8 +79,6 @@ const mutations = {
         // filter out videos for semester 1 and semester 2.
         for(let i=0; i<payload.videos.length; i++) {
             let currentVideo = payload.videos[i];
-            console.log('sem1:'+currentVideo.semester);
-
             if (currentVideo.semester == 1) {
                 sem1.push(currentVideo);
             } else if (currentVideo.semester == 2) {
@@ -94,6 +91,12 @@ const mutations = {
         state.videosSem1 = sem1;
         state.videosSem2 = sem2;
         state.videosOther = other;
+    },
+    updateActiveClass(state, classId) {
+        state.activeClass = classId;
+    },
+    updateActiveVideo(state, videoId) {
+        state.activeVideo = videoId;
     }
 }
 

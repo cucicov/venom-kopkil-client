@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from '@/components/HomePage.vue'
 import OldHomePage from '@/components/OldHomePage.vue'
+import Video from '@/components/Video.vue'
 import VueMeta from 'vue-meta'
 
 Vue.use(Router)
@@ -24,8 +25,8 @@ export default new Router({
             component: OldHomePage
         },
         {
-            path: '/video',
-            component: OldHomePage
+            path: '/video/:class/:id',
+            component: Video
         },
         {
             path: '*',
