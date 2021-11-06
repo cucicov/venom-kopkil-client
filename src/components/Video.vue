@@ -22,8 +22,8 @@
 
     <div class="first-content-bg">
       <div class="first-content-wrapper">
-        <div class="video-content-main">
-          <vue-core-video-player width="100%" :src="fullVideoUrl"></vue-core-video-player>
+        <div class="video-content-main" v-if="fullVideoUrl !== undefined">
+          <vue-core-video-player  width="100%" :src="fullVideoUrl"></vue-core-video-player>
         </div>
 
         <div class="video-content-description-wrapper">
@@ -104,7 +104,7 @@ export default {
       authorImage: "https://picsum.photos/id/200/500",
       materialUrl: "url",
       quizId: "qid",
-      fullVideoUrl: "fullVideoUrl"
+      fullVideoUrl: undefined
     }
   },
   components: {
