@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="video-wrapper">
     <div class="video-header-wrapper">
       <div class="first-header-logo">copiii povestesc istoria</div>
     </div>
@@ -8,10 +8,10 @@
       <div class="video-header-courses">
         <div class="video-header-courses-content">
           <div class="video-header-courses-pretitle">
-            PREISTORIE
+            {{preTitle}}
           </div>
           <div class="video-header-courses-title">
-            Primii Oameni
+            {{title}}
           </div>
         </div>
         <div>
@@ -22,7 +22,9 @@
 
     <div class="first-content-bg">
       <div class="first-content-wrapper">
-        <div class="first-content-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+        <div class="video-content-main">
+          <vue-core-video-player width="100%" :src="fullVideoUrl"></vue-core-video-player>
+        </div>
 
         <div class="video-content-description-wrapper">
           <div class="video-content-description-left">
@@ -31,16 +33,16 @@
                 DESCRIERE CURS
               </div>
               <div class="video-content-description-text-description">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                {{description}}
               </div>
             </div>
             <div class="video-content-description-buttons">
               <div class="first-header-button-wrapper">
                 <div class="first-header-button main">
-                  <button v-on:click="gotoCourses">Descarcă materiale</button>
+                  <button @click="onClick()">Descarcă materiale</button>
                 </div>
                 <div class="first-header-button">
-                  <button v-on:click="gotoTeam">Testează-ți cunoștințele</button>
+                  <button>Testează-ți cunoștințele</button>
                 </div>
               </div>
             </div>
@@ -51,11 +53,11 @@
             </div>
             <div class="video-content-description-text-student-wrapper">
               <div class="video-content-description-text-student-text">
-                <b>Anca Dimulescu</b><br/>
-                Elevă clasa a V-a Liceul Gimnazial Iancu
+                <b>{{authorName}}</b><br/>
+                {{authorDescription}}
               </div>
               <div class="video-content-description-text-student-image">
-                <v-img src="https://picsum.photos/id/200/500"
+                <v-img :src="authorImage"
                        max-height="100"
                        max-width="100">
                 </v-img>
@@ -67,14 +69,14 @@
     </div>
 
 
-    <div class="first-footer-team">
+    <div class="first-footer-team" v-if="hasRecommendations">
       <div class="first-footer-team-title">Recomandări</div>
     </div>
-    <div class="first-footer-team-body">
+    <div class="first-footer-team-body" v-if="hasRecommendations">
       <div class="first-footer-team-content">
 
         <div class="first-footer-team-item">
-          asdasda
+          <VideoListPreview :is-mobile="isMobile()" :videos="previewVideos"/>
         </div>
 
       </div>
@@ -86,36 +88,136 @@
 
 <script>
 import Footer from './Footer'
+import VideoListPreview from "@/components/VideoListPreview";
+import axios from "axios";
 
 export default {
   name: 'Video',
+  data() {
+    return {
+      hasRecommendations: true,
+      preTitle: "pret",
+      title: "title",
+      description: "desc",
+      authorName: "auth",
+      authorDescription: "description",
+      authorImage: "https://picsum.photos/id/200/500",
+      materialUrl: "url",
+      quizId: "qid",
+      fullVideoUrl: "fullVideoUrl"
+    }
+  },
   components: {
-    Footer
+    Footer,
+    VideoListPreview,
   },
   computed: {
-    test() {
-      return this.$store.getters.activeVideoId;
+    previewVideos() {
+      return this.$store.getters.allVideos;
+    }
+  },
+  methods: {
+    onClick() {
+      axios({
+        url: this.materialUrl,
+        method: 'GET',
+        responseType: 'blob',
+      }).then((response) => {
+        var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+        var fURL = document.createElement('a');
+
+        fURL.href = fileURL;
+        fURL.setAttribute('download', 'materiale.zip'); //TODO: change name here?
+        document.body.appendChild(fURL);
+
+        fURL.click();
+      });
+    },
+
+    getRecommendedVideos: function () {
+      let vm = this;
+      const payload = {
+        classOf: this.$store.getters.activeClass,
+        videosLimit: 3, // limit recommended videos to 3
+        currentVideoId: this.$store.getters.activeVideo,
+      }
+      this.$store.dispatch('loadVideos', payload)
+          .then(() => {
+            console.log(payload.videos.length + ' recommended videos found videos for class: ' + this.$store.getters.activeClass);
+            if (payload.videos.length == 0) {
+              vm.hasRecommendations = false;
+            }
+          });
+    },
+    getFullVideoDetails: function () {
+      let vm = this;
+      const payload = {
+        classOf: this.$store.getters.activeClass,
+        currentVideoId: this.$store.getters.activeVideo,
+      }
+
+      this.$store.dispatch('loadFullVideoDetails', payload)
+          .then(() => {
+              vm.preTitle = payload.preTitle;
+              vm.title = payload.title;
+              vm.description = payload.description;
+              // authorDescription: "description",
+              // authorImage: "https://picsum.photos/id/200/500",
+              // vm.authorId = payload.au //TODO: retrieve author details?
+              vm.materialUrl = payload.materialUrl;
+              vm.quizId = payload.quizId;
+              vm.fullVideoUrl = payload.fullVideoUrl;
+
+              console.log(">>>>>>" + payload.fullVideoUrl);
+          });
+    },
+    updateCurrentVideoParams() {
+      this.$store.dispatch('setActiveVideo',
+      {
+        activeClass: this.$route.params.class,
+        activeVideoId: this.$route.params.id
+      });
+    },
+    isMobile() { //TODO: move to Preview component?
+      if(screen.width <= 760 ) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+  },
+  watch: {
+    '$route.params.id' : function() {
+      this.updateCurrentVideoParams();
+      this.getRecommendedVideos();
+      this.getFullVideoDetails();
     }
   },
   mounted: function() {
-    this.$store.dispatch('setActiveVideo',
-        {
-          activeClass: this.$route.params.class,
-          activeVideoId: this.$route.params.id
-        });
+    console.log("Video component mounted.");
+    this.updateCurrentVideoParams();
+    this.getRecommendedVideos();
+    this.getFullVideoDetails();
   }
 }
 </script>
 
-<style>
+<style scoped>
 @media only screen and (max-width: 768px) {
   .video-header-wrapper {
     padding: 20px 20px 180px 20px;
+  }
+  .first-footer-team-content {
+    justify-content: space-around;
   }
 }
 @media only screen and (min-width: 769px) {
   .video-header-wrapper {
     padding: 80px 80px 200px 80px;
+  }
+  .first-footer-team-content {
+    justify-content: space-between;
   }
 }
 
@@ -135,6 +237,7 @@ export default {
 .video-header-courses-pretitle {
   font-size: 14px;
   line-height: 18px;
+  text-transform: uppercase;
 }
 
 .video-header-courses {
@@ -204,6 +307,21 @@ export default {
 .video-content-description-buttons {
   margin-top: 40px;
 }
+
+.first-footer-team-item {
+  flex-basis: 100%;
+}
+
+.video-wrapper {
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.video-content-main {
+  margin: 40px;
+}
+
 /*.video-header-courses-title {*/
 /*  font-size: 18px;*/
 /*  line-height: 21px;*/

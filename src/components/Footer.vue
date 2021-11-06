@@ -19,5 +19,6 @@ export default {
   font-size: 36px;
   line-height: 43px;
   color: #1B2CC1;
+  flex-grow: 1;
 }
 </style>

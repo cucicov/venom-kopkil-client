@@ -15,7 +15,7 @@ const state = {
     ],
     videosSem2: [
         {
-            id: 1,
+            id: 2,
             fullVideoId: 101,
             title: "video title 1",
             thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
@@ -25,7 +25,7 @@ const state = {
     ],
     videosOther: [
         {
-            id: 1,
+            id: 3,
             fullVideoId: 101,
             title: "video title 1",
             thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
@@ -40,7 +40,8 @@ const getters = {
     activeVideo: state => state.activeVideo,
     videosSem1: state => state.videosSem1,
     videosSem2: state => state.videosSem2,
-    videosOther: state => state.videosOther
+    videosOther: state => state.videosOther,
+    allVideos: state => state.videosSem1.concat(state.videosSem2).concat(state.videosOther)
 }
 
 const actions = {
@@ -50,18 +51,56 @@ const actions = {
                let data = resp.data;
                 payload.videos = [];
 
-               if (data && data.length > 0) {
-                   for (let i = 0; i < data.length; i++) {
-                       payload.videos.push({
-                           id : data[i]._id,
-                           fullVideoId: data[i].fullvideoid,
-                           title: data[i].title,
-                           thumbnail: data[i].thumbnail,
-                           semester: data[i].semester
-                       })
-                   }
-               }
+                // limit the number of returned videos if payload contains limit parameter
+                if (payload.videosLimit !== undefined) { // load only a limited amount of videos
+                    let i = 0;
+                    while(payload.videos.length < payload.videosLimit
+                        && data.length > i) {
+                        if (data[i].fullVideoId != payload.currentVideoId) { // skip current video id.
+                            payload.videos.push({
+                                id : data[i]._id,
+                                fullVideoId: data[i].fullVideoId,
+                                title: data[i].title,
+                                thumbnail: data[i].thumbnail,
+                                semester: data[i].semester,
+                                class: data[i].class
+                            });
+                        }
+                        i++;
+                    }
+                } else { // load all videos
+                    if (data && data.length > 0) {
+                        for (let i = 0; i < data.length; i++) {
+                            payload.videos.push({
+                                id : data[i]._id,
+                                fullVideoId: data[i].fullVideoId,
+                                title: data[i].title,
+                                thumbnail: data[i].thumbnail,
+                                semester: data[i].semester,
+                                class: data[i].class
+                            })
+                        }
+                    }
+                }
+
                commit('loadVideos', payload);
+            });
+    },
+    async loadFullVideoDetails({commit}, payload) {
+        await Vue.axios.get('/video/' + payload.currentVideoId)
+            .then((resp) => {
+               let data = resp.data[0];
+
+                payload.fullVideoId = data._id;
+                payload.preTitle = data.pretitle;
+                payload.title = data.title;
+                payload.description = data.description;
+                payload.authorId = data.authorId;
+                payload.materialUrl = data.materialUrl;
+                payload.quizId = data.quizId;
+                payload.fullVideoUrl = data.fullVideoUrl;
+
+               commit('nothing', payload);
             });
     },
     setActiveVideo({commit}, payload) {
@@ -97,6 +136,9 @@ const mutations = {
     },
     updateActiveVideo(state, videoId) {
         state.activeVideo = videoId;
+    },
+    nothing(state, noth) {
+        console.log(state + noth);
     }
 }
 

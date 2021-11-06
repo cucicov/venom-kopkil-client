@@ -37,29 +37,7 @@
               Semestrul I
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <div class="first-content-videos-container">
-                  <div v-for="video in videos1" :key="video.id">
-
-                    <div v-if="isMobile()">
-                      <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
-                             max-height="190"
-                             max-width="260">
-                        <div class="play-image" v-on:click="gotoVideo(video.id)">&#9658;</div>
-                      </v-img>
-                    </div>
-                    <div v-else>
-                      <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
-                             max-height="190"
-                             max-width="320">
-                        <div class="play-image" v-on:click="gotoVideo(video.id)">&#9658;</div>
-                      </v-img>
-                    </div>
-
-                    <div class="first-content-video-title">
-                      {{ video.title }}
-                    </div>
-                  </div>
-              </div>
+              <VideoListPreview :is-mobile="isMobile()" :videos="videos1"/>
             </v-expansion-panel-content>
 
           </v-expansion-panel>
@@ -69,29 +47,7 @@
               Semestrul II
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <div class="first-content-videos-container">
-                <div v-for="video in videos2" :key="video.id">
-
-                  <div v-if="isMobile()">
-                    <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
-                           max-height="190"
-                           max-width="260">
-                      <div class="play-image" v-on:click="gotoVideo(video.id)">&#9658;</div>
-                    </v-img>
-                  </div>
-                  <div v-else>
-                    <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
-                           max-height="190"
-                           max-width="320">
-                      <div class="play-image" v-on:click="gotoVideo(video.id)">&#9658;</div>
-                    </v-img>
-                  </div>
-
-                  <div class="first-content-video-title">
-                    {{ video.title }}
-                  </div>
-                </div>
-              </div>
+              <VideoListPreview :is-mobile="isMobile()" :videos="videos2"/>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -138,11 +94,13 @@
 
 <script>
 import Footer from './Footer'
+import VideoListPreview from './VideoListPreview'
 
 export default {
   name: 'HomePage',
   components: {
-    Footer
+    Footer,
+    VideoListPreview
   },
   data() {
     return {
@@ -206,9 +164,6 @@ export default {
     gotoTeam: function() {
       this.$router.push('/team');
     },
-    gotoVideo: function(videoId) {
-      this.$router.push({ path: `/video/${this.activeClass}/${videoId}` });
-    },
     getVideosByClass: function () {
       const vm = this;
       const payload = {
@@ -267,14 +222,14 @@ export default {
   .first-footer-team {
     padding: 80px 80px 0 80px;
   }
-  .first-footer-team-content {
-    margin: 0 80px 80px 80px;
-  }
   .first-newsletter-email-wrapper input {
     padding: 15px 20px;
   }
+
   .first-footer-team-content {
     justify-content: space-between;
+    margin: 0 80px 80px 80px;
+    padding: 40px;
   }
   .header-top-line {
     width: 300px;
@@ -477,27 +432,12 @@ export default {
 }
 
 .first-footer-team-item {
-  margin: 40px 20px;
+  /*margin: 40px 20px 0px 20px;*/
 }
 
 .first-video-thumbnail-main-image {
   outline: 10px solid #F4F9F9;
   outline-offset: -10px;
-}
-
-.play-image {
-  height: 54px;
-  width: 54px;
-  background: #1B2CC1;
-  position: relative;
-  margin-left: auto;
-  margin-top: 136px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color:white;
-  border: 2px solid #F4F9F9;
 }
 
 .first-footer-team-item-name {
@@ -552,19 +492,4 @@ export default {
   background-color: #1B2CC1;
 }
 
-.first-content-videos-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.first-content-video-title {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
-  text-align: left;
-  margin: 20px 0px 50px 10px;
-}
 </style>
