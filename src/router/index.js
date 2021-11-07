@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from '@/components/HomePage.vue'
-import OldHomePage from '@/components/OldHomePage.vue'
 import Video from '@/components/Video.vue'
 import VueMeta from 'vue-meta'
 
@@ -18,11 +17,11 @@ export default new Router({
         },
         {
             path: '/courses',
-            component: OldHomePage
+            component: HomePage
         },
         {
             path: '/team',
-            component: OldHomePage
+            component: HomePage
         },
         {
             path: '/video/:class/:id',

@@ -127,7 +127,7 @@ export default {
         var fURL = document.createElement('a');
 
         fURL.href = fileURL;
-        fURL.setAttribute('download', 'materiale.zip'); //TODO: change name here?
+        fURL.setAttribute('download', this.title.replace(/\s/g, '-'));
         document.body.appendChild(fURL);
 
         fURL.click();
@@ -161,9 +161,9 @@ export default {
               vm.preTitle = payload.preTitle;
               vm.title = payload.title;
               vm.description = payload.description;
-              // authorDescription: "description",
-              // authorImage: "https://picsum.photos/id/200/500",
-              // vm.authorId = payload.au //TODO: retrieve author details?
+              vm.authorName = payload.author.name,
+              vm.authorDescription = payload.author.description,
+              vm.authorImage = payload.author.image,
               vm.materialUrl = payload.materialUrl;
               vm.quizId = payload.quizId;
               vm.fullVideoUrl = payload.fullVideoUrl;
@@ -277,7 +277,7 @@ export default {
 
 .video-content-description-left {
   flex-grow: 1;
-  max-width: 60%;
+  max-width: 70%;
 }
 
 .video-content-description-text-description {
@@ -296,6 +296,7 @@ export default {
 .video-content-description-text-student-text {
   text-align: left;
   line-height: 25px;
+  flex-basis: 100%;
 }
 
 .video-content-description-text-student-image {
