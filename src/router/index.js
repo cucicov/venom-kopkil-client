@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from '@/components/HomePage.vue'
 import Video from '@/components/Video.vue'
+import Author from '@/components/Author.vue'
 import VueMeta from 'vue-meta'
 
 Vue.use(Router)
@@ -16,16 +17,12 @@ export default new Router({
             component: HomePage,
         },
         {
-            path: '/courses',
-            component: HomePage
-        },
-        {
-            path: '/team',
-            component: HomePage
-        },
-        {
             path: '/video/:class/:id',
             component: Video
+        },
+        {
+            path: '/author/:id',
+            component: Author
         },
         {
             path: '*',

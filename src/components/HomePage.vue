@@ -1,22 +1,26 @@
 <template>
   <div>
     <div class="first-header-wrapper">
-      <div class="first-header-logo">copiii povestesc istoria</div>
+      <div class="first-header-logo">copiii explică istoria</div>
       <div class="first-header-title-big">Misiune</div>
-      <div class="first-header-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+      <div class="first-header-description">
+        Credem că istoria poate fi mult mai captivantă pentru copii atunci când e povestită tot de copii. Așa
+        că i-am scos pe elevii Școlii Gimnaziale nr.1 din Sohatu, jud Călărași la joacă și i-am rugat să ne
+        explice câteva lucruri despre începuturile istoriei în Orientul Antic.
+      </div>
       <div class="first-header-button-wrapper">
         <div class="first-header-button main">
-          <button v-on:click="gotoCourses">Spre cursuri</button>
+          <button v-on:click="scrollTo('coursesRef')">Spre cursuri</button>
         </div>
         <div class="first-header-button">
-          <button v-on:click="gotoTeam">Cunoaște echipa</button>
+          <button v-on:click="scrollTo('teamRef')">Cunoaște echipa</button>
         </div>
       </div>
     </div>
 
     <div class="first-header-courses-wrapper">
       <div class="first-header-courses">
-        <div class="first-header-courses-title">Cursuri</div>
+        <div class="first-header-courses-title" ref="coursesRef">Cursuri</div>
         <div>
           <select v-model="activeClass" @change="getVideosByClass()">
             <option v-for="option in options" v-bind:value="option.key" v-bind:key="option.key">
@@ -29,7 +33,14 @@
 
     <div class="first-content-bg">
       <div class="first-content-wrapper">
-        <div class="first-content-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+        <div class="first-content-description">
+          În prima serie de lecții video, copiii din Sohatu ne povestesc despre primii oameni, despre viața
+          cotidiană în Orientul Antic, despre meșteșugurile și credințele practicate atunci, despre felul în care
+          oamenii se organizau în grupuri sociale, despre construcțiile lor impresionante și despre legile
+          după care se guvernau. Care este cel mai vechi schelet uman descoperit de cercetători? Cine a
+          fost Ötzi? Ce este Turnul Babel? Ce sunt pagodele? Ce animale mumificau egiptenii? Cum au
+          evoluat oamenii în neolitic? Să începem cu începutul.
+        </div>
         <v-expansion-panels accordion multiple v-model="panelcontentvideos">
           <v-expansion-panel expand elevation-0>
             <div class="header-top-line"></div>
@@ -41,15 +52,15 @@
             </v-expansion-panel-content>
 
           </v-expansion-panel>
-          <v-expansion-panel elevation-0>
-            <div class="header-top-line"></div>
-            <v-expansion-panel-header>
-              Semestrul II
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <VideoListPreview :is-mobile="isMobile()" :videos="videos2"/>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
+<!--          <v-expansion-panel elevation-0>-->
+<!--            <div class="header-top-line"></div>-->
+<!--            <v-expansion-panel-header>-->
+<!--              Semestrul II-->
+<!--            </v-expansion-panel-header>-->
+<!--            <v-expansion-panel-content>-->
+<!--              <VideoListPreview :is-mobile="isMobile()" :videos="videos2"/>-->
+<!--            </v-expansion-panel-content>-->
+<!--          </v-expansion-panel>-->
         </v-expansion-panels>
       </div>
     </div>
@@ -60,12 +71,11 @@
       <div class="first-newsletter-email-wrapper">
         <input v-model="newsletter_email"
                style="background: white;" placeholder="Adresă e-mail"/>
-        <button v-on:click="gotoTeam">Înregistrează</button>
+        <button v-on:click="scrollTo('')">Înregistrează</button>
       </div>
     </div>
 
-
-    <div class="first-footer-team">
+    <div class="first-footer-team" ref="teamRef">
       <div class="first-footer-team-title">Echipa</div>
     </div>
     <div class="first-footer-team-body">
@@ -108,36 +118,45 @@ export default {
       activeClass: 1,
       newsletter_email: '',
       options: [
-        { text: 'Clasa I', key: 1 },
-        { text: 'Clasa II', key: 2 },
-        { text: 'Clasa III', key: 3 }
+        { text: 'Clasa a V-a', key: 1 },
       ],
       team: [
         {
           id: 1,
-          name: 'Vasile',
-          role: 'santehnic',
-          lazyUrl: "https://picsum.photos/id/1062/10/6",
-          url: "https://picsum.photos/id/1062/500"
+          name: 'Alina Constantinescu',
+          role: 'Manager proiect',
+          url: "./team/Alina_Constantinescu_manager_proiect.jpg"
         },{
           id: 2,
-          name: 'Maria',
-          role: 'activistă',
-          lazyUrl: "https://picsum.photos/id/1084/10/6",
-          url: "https://picsum.photos/id/1084/500"
+          name: 'Andreea Tudor',
+          role: 'Responsabil financiar',
+          url: "./team/Andreea Tudor_responsabil financiar.jpg"
         },{
           id: 3,
-          name: 'Ionel',
-          role: 'gigel',
-          lazyUrl: "https://picsum.photos/id/200/10/6",
-          url: "https://picsum.photos/id/200/500"
+          name: 'Cristina Baciu',
+          role: 'Editor',
+          url: "./team/Cristina Baciu_editor.jpg"
         },{
-          id: 4,
-          name: 'Vasilisa',
-          role: 'direktor',
-          lazyUrl: "https://picsum.photos/id/275/10/6",
-          url: "https://picsum.photos/id/275/500"
-        },
+          id: 99,
+          name: 'Eliza Zdru',
+          role: 'Regizor',
+          url: "./team/Eliza Zdru_producator _ regizor.JPG"
+        },{
+          id: 5,
+          name: 'Ionuț Pîrneci',
+          role: 'Profesor de istorie',
+          url: "./team/Ionuț Pirneci_profesor de istorie.jpg"
+        },{
+          id: 6,
+          name: 'Matei Budeș',
+          role: 'Director de imagine',
+          url: "./team/Matei Budeș_ director de imagine.jpeg"
+        },{
+          id: 7,
+          name: 'Vlad Bolocan',
+          role: 'șofer',
+          url: "./team/Vlad Bolocan_șofer.jpeg"
+        }
       ]
     }
   },
@@ -158,12 +177,6 @@ export default {
         return false;
       }
     },
-    gotoCourses: function() {
-      this.$router.push('/courses');
-    },
-    gotoTeam: function() {
-      this.$router.push('/team');
-    },
     getVideosByClass: function () {
       const vm = this;
       const payload = {
@@ -173,6 +186,12 @@ export default {
         .then(() => {
           console.log(payload.videos.length + ' found videos for class: ' + vm.activeClass);
         });
+    },
+    scrollTo(refName) {
+      var element = this.$refs[refName];
+      var top = element.offsetTop;
+
+      window.scrollTo({top:top, left:0, behavior: 'smooth'});
     }
   },
   mounted: function() {
@@ -241,6 +260,7 @@ export default {
   flex-direction: column;
   background-size: cover;
   background: #F2B4B4 url("../assets/mainbg.png") no-repeat;
+  background-size: cover;
 }
 
 .first-header-logo {
@@ -252,6 +272,7 @@ export default {
   width: 81px;
   margin-bottom: 80px;
   text-align: left;
+  cursor: pointer;
 }
 
 .first-header-title-big {
@@ -458,6 +479,7 @@ export default {
   line-height: 14px;
   letter-spacing: -0.02em;
   text-align: left;
+  margin-bottom: 30px;
 }
 
 .v-expansion-panel-header__icon {

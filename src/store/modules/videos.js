@@ -103,6 +103,22 @@ const actions = {
                commit('nothing', payload);
             });
     },
+
+    async loadFullAuthorDetails({commit}, payload) {
+        await Vue.axios.get('/author/' + payload.currentVideoId)
+            .then((resp) => {
+                let data = resp.data[0];
+
+                payload.id = data._id;
+                payload.name = data.name;
+                payload.description = data.description;
+                payload.fullDescription = data.fullDescription;
+                payload.image = data.image;
+                payload.fullVideoUrl = data.fullVideoUrl;
+
+                commit('nothing', payload);
+            });
+    },
     setActiveVideo({commit}, payload) {
         commit('updateActiveClass', payload.activeClass);
         commit('updateActiveVideo', payload.activeVideoId);
