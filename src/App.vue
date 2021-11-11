@@ -10,8 +10,8 @@
 export default {
   name: 'App',
   metaInfo: {
-    title: 'Copiii povestesc istoria',
-    titleTemplate: '%s | Copiii povestesc istoria',
+    title: 'Copiii explică istoria',
+    titleTemplate: '%s | Copiii explică istoria',
     htmlAttrs: {
       lang: 'en-US'
     },
