@@ -129,7 +129,7 @@ export default {
           var fURL = document.createElement('a');
 
           fURL.href = fileURL;
-          fURL.setAttribute('download', this.title.replace(/\s/g, '-'));
+          fURL.setAttribute('download', this.title.replace(/\s/g, '-') + ".rar");
           document.body.appendChild(fURL);
 
           fURL.click();
