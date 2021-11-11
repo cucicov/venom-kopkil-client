@@ -139,11 +139,11 @@ export default {
         },{
           id: 99,
           name: 'Eliza Zdru',
-          role: 'Regizor',
+          role: 'Regizor/producător',
           url: "./team/Eliza Zdru_producator _ regizor.JPG"
         },{
           id: 5,
-          name: 'Ionuț Pîrneci',
+          name: 'Ion David Pirneci',
           role: 'Profesor de istorie',
           url: "./team/Ionuț Pirneci_profesor de istorie.jpg"
         },{
