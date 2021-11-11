@@ -69,5 +69,6 @@ export default {
   line-height: 21px;
   text-align: left;
   margin: 20px 0px 50px 10px;
+  max-width: 320px;
 }
 </style>
