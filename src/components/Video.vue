@@ -42,7 +42,7 @@
                   <button @click="downloadMateriale()">Descarcă materiale</button>
                 </div>
                 <div class="first-header-button">
-                  <button @click="downloadQuiz()">Testează-ți cunoștințele</button>
+                  <button @click="downloadMateriale()">Testează-ți cunoștințele</button>
                 </div>
               </div>
             </div>
