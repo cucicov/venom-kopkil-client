@@ -39,10 +39,10 @@
             <div class="video-content-description-buttons">
               <div class="first-header-button-wrapper">
                 <div class="first-header-button main">
-                  <button @click="onClick()">Descarcă materiale</button>
+                  <button @click="downloadMateriale()">Descarcă materiale</button>
                 </div>
                 <div class="first-header-button">
-                  <button>Testează-ți cunoștințele</button>
+                  <button @click="downloadQuiz()">Testează-ți cunoștințele</button>
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default {
     }
   },
   methods: {
-    onClick() {
+    downloadMateriale() {
       if (this.materialUrl !== "") {
         axios({
           url: this.materialUrl,
@@ -130,6 +130,24 @@ export default {
 
           fURL.href = fileURL;
           fURL.setAttribute('download', this.title.replace(/\s/g, '-') + ".rar");
+          document.body.appendChild(fURL);
+
+          fURL.click();
+        });
+      }
+    },
+    downloadQuiz() {
+      if (this.quizId !== "") {
+        axios({
+          url: this.quizId,
+          method: 'GET',
+          responseType: 'blob',
+        }).then((response) => {
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fURL = document.createElement('a');
+
+          fURL.href = fileURL;
+          fURL.setAttribute('download', this.title.replace(/\s/g, '-quiz') + ".rar");
           document.body.appendChild(fURL);
 
           fURL.click();
