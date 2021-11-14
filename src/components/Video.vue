@@ -39,10 +39,10 @@
             <div class="video-content-description-buttons">
               <div class="first-header-button-wrapper">
                 <div class="first-header-button main">
-                  <button @click="downloadMateriale()">Descarcă materiale</button>
+                  <button @click="downloadMateriale(materialUrl)">Descarcă materiale</button>
                 </div>
                 <div class="first-header-button">
-                  <button @click="downloadMateriale()">Testează-ți cunoștințele</button>
+                  <button @click="downloadMateriale(quizId)">Testează-ți cunoștințele</button>
                 </div>
               </div>
             </div>
@@ -118,10 +118,10 @@ export default {
     }
   },
   methods: {
-    downloadMateriale() {
-      if (this.materialUrl !== "") {
+    downloadMateriale(source) {
+      if (source !== "") {
         axios({
-          url: this.materialUrl,
+          url: source,
           method: 'GET',
           responseType: 'blob',
         }).then((response) => {
@@ -136,25 +136,6 @@ export default {
         });
       }
     },
-    downloadQuiz() {
-      if (this.quizId !== "") {
-        axios({
-          url: this.quizId,
-          method: 'GET',
-          responseType: 'blob',
-        }).then((response) => {
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fURL = document.createElement('a');
-
-          fURL.href = fileURL;
-          fURL.setAttribute('download', this.title.replace(/\s/g, '-quiz') + ".rar");
-          document.body.appendChild(fURL);
-
-          fURL.click();
-        });
-      }
-    },
-
     getRecommendedVideos: function () {
       let vm = this;
       const payload = {
