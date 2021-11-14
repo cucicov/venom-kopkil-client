@@ -120,6 +120,7 @@ export default {
   methods: {
     downloadMateriale(source) {
       if (source !== "") {
+        console.log("download " + source);
         axios({
           url: source,
           method: 'GET',
