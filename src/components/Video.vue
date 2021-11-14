@@ -28,7 +28,7 @@
 
         <div class="video-content-description-wrapper">
           <div class="video-content-description-left">
-            <div class="video-content-description-text">
+            <div class="video-content-description-text" v-if="description !== undefined">
               <div class="video-content-description-text-title">
                 DESCRIERE CURS
               </div>
@@ -98,7 +98,7 @@ export default {
       hasRecommendations: true,
       preTitle: "pret",
       title: "title",
-      description: "desc",
+      description: undefined,
       authorName: "auth",
       authorId: "id",
       authorDescription: "description",
@@ -163,16 +163,22 @@ export default {
           .then(() => {
               vm.preTitle = payload.preTitle;
               vm.title = payload.title;
-              vm.description = payload.description;
+              if (payload.description.length == 0) {
+                vm.description = undefined;
+              } else {
+                vm.description = payload.description;
+              }
               vm.authorName = payload.author.name,
               vm.authorId = payload.author._id,
               vm.authorDescription = payload.author.description,
               vm.authorImage = payload.author.image,
               vm.materialUrl = payload.materialUrl;
               vm.quizId = payload.quizId;
-              vm.fullVideoUrl = payload.fullVideoUrl;
-
-              // console.log(">>>>>>" + payload.fullVideoUrl);
+              if (payload.fullVideoUrl.length == 0) {
+                vm.fullVideoUrl = undefined;
+              } else {
+                vm.fullVideoUrl = payload.fullVideoUrl;
+              }
           });
     },
     updateCurrentVideoParams() {
@@ -191,8 +197,8 @@ export default {
       }
     },
     gotoAuthor: function (authorId) {
-      console.log(authorId);
-      // this.$router.push({path: `/author/${authorId}`});
+      // console.log(authorId);
+      this.$router.push({path: `/author/${authorId}`});
       // this.$router.go();
     },
     gotoMainPage: function () {
@@ -289,7 +295,7 @@ export default {
 }
 
 .video-content-description-left {
-  flex-grow: 1;
+  flex-grow: 3;
   max-width: 70%;
 }
 
