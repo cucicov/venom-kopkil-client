@@ -71,7 +71,7 @@
       <div class="first-newsletter-email-wrapper">
         <input v-model="newsletter_email"
                style="background: white;" placeholder="Adresă e-mail"/>
-        <button v-on:click="scrollTo('')">Înregistrează</button>
+        <button v-on:click="saveEmailNewsletter(newsletter_email)" @click="snackbar = true">Înregistrează</button>
       </div>
     </div>
 
@@ -99,6 +99,17 @@
 
     <Footer/>
 
+
+    <!-- dialogs -->
+    <v-snackbar v-model="snackbar" >
+      {{ textNewsletterOk }}
+      <template v-slot:action="{ attrs }">
+        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+          Închide
+        </v-btn>
+      </template>
+    </v-snackbar>
+
   </div>
 </template>
 
@@ -117,6 +128,8 @@ export default {
       panelcontentvideos: [0], // keep only first panel expanded.
       activeClass: 1,
       newsletter_email: '',
+      snackbar: false,
+      textNewsletterOk: `Adresa de email a fost înregistrată.`,
       options: [
         { text: 'Clasa a V-a', key: 1 },
       ],
@@ -192,7 +205,13 @@ export default {
       var top = element.offsetTop;
 
       window.scrollTo({top:top, left:0, behavior: 'smooth'});
-    }
+    },
+    saveEmailNewsletter(email) {
+      this.$store.dispatch('saveEmailNewsletter', email).then(() => {
+        //TODO: display dialog?
+        console.log("Email for newsletter saved.");
+      })
+    },
   },
   mounted: function() {
     console.log('Home page component has been created!');

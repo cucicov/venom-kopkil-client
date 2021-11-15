@@ -39,10 +39,10 @@
             <div class="video-content-description-buttons">
               <div class="first-header-button-wrapper">
                 <div class="first-header-button main">
-                  <button @click="downloadMateriale(quizId)">Descarcă materiale</button>
+                  <button @click="downloadMateriale(materialUrl)">Descarcă materiale</button>
                 </div>
                 <div class="first-header-button">
-                  <button @click="downloadMateriale(materialUrl)">Testează-ți cunoștințele</button>
+                  <button @click="downloadMateriale(quizId)">Testează-ți cunoștințele</button>
                 </div>
               </div>
             </div>

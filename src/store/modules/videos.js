@@ -103,7 +103,6 @@ const actions = {
                commit('nothing', payload);
             });
     },
-
     async loadFullAuthorDetails({commit}, payload) {
         await Vue.axios.get('/author/' + payload.currentVideoId)
             .then((resp) => {
@@ -117,6 +116,12 @@ const actions = {
                 payload.fullVideoUrl = data.fullVideoUrl;
 
                 commit('nothing', payload);
+            });
+    },
+    async saveEmailNewsletter({commit}, email) {
+        await Vue.axios.post('/emails/add/', {email: email})
+            .then((resp) => {
+                commit('nothing', resp);
             });
     },
     setActiveVideo({commit}, payload) {
