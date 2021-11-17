@@ -208,7 +208,6 @@ export default {
     },
     saveEmailNewsletter(email) {
       this.$store.dispatch('saveEmailNewsletter', email).then(() => {
-        //TODO: display dialog?
         console.log("Email for newsletter saved.");
       })
     },

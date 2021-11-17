@@ -10,8 +10,8 @@ import store from './store'
 Vue.config.productionTip = false
 
 Vue.axios = Vue.prototype.$http = axios.create({
-  // baseURL: 'https://venom-kopkil-server.herokuapp.com/api'
-  baseURL: 'http://localhost:8081/api' // TODO: take from parameter?
+  baseURL: 'https://venom-kopkil-server.herokuapp.com/api'
+  // baseURL: 'http://localhost:8081/api' // TODO: take from parameter?
 })
 
 new Vue({
