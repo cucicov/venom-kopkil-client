@@ -168,17 +168,16 @@ export default {
               } else {
                 vm.description = payload.description;
               }
-              vm.authorName = payload.author.name,
-              vm.authorId = payload.author._id,
-              vm.authorDescription = payload.author.description,
-              vm.authorImage = payload.author.image,
-              vm.materialUrl = payload.materialUrl;
+              vm.authorName = payload.author.name;
+              vm.authorId = payload.author._id;
+              vm.authorDescription = payload.author.description;
+              vm.authorImage = payload.author.image;
               if (payload.materialUrl.length == 0) {
                 vm.materialUrl = undefined;
               } else {
                 vm.materialUrl = payload.materialUrl;
               }
-              vm.quizId = payload.quizId;
+
               if (payload.quizId.length == 0) {
                 vm.quizId = undefined;
               } else {
