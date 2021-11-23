@@ -38,10 +38,10 @@
             </div>
             <div class="video-content-description-buttons">
               <div class="first-header-button-wrapper">
-                <div class="first-header-button main">
+                <div class="first-header-button main" v-if="materialUrl !== undefined">
                   <button @click="downloadMateriale(materialUrl)">Descarcă materiale</button>
                 </div>
-                <div class="first-header-button">
+                <div class="first-header-button" v-if="quizId !== undefined">
                   <button @click="downloadMateriale(quizId)">Testează-ți cunoștințele</button>
                 </div>
               </div>
@@ -173,7 +173,17 @@ export default {
               vm.authorDescription = payload.author.description,
               vm.authorImage = payload.author.image,
               vm.materialUrl = payload.materialUrl;
+              if (payload.materialUrl.length == 0) {
+                vm.materialUrl = undefined;
+              } else {
+                vm.materialUrl = payload.materialUrl;
+              }
               vm.quizId = payload.quizId;
+              if (payload.quizId.length == 0) {
+                vm.quizId = undefined;
+              } else {
+                vm.quizId = payload.quizId;
+              }
               if (payload.fullVideoUrl.length == 0) {
                 vm.fullVideoUrl = undefined;
               } else {
