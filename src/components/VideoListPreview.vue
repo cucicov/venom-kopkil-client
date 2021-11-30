@@ -31,7 +31,11 @@ export default {
     videos: Array
   },
   methods: {
+    scrollToTop() {
+      window.scrollTo(0,0);
+    },
     gotoVideo: function (videoId, activeClass) {
+      this.scrollToTop();
       this.$router.push({path: `/video/${activeClass}/${videoId}`});
       // this.$router.go();
     },

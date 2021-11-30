@@ -3,6 +3,7 @@ import Vue from 'vue'
 const state = {
     activeClass: -1,
     activeVideo: -1,
+    activeVideoAuthors: [],
     videosSem1: [
         {
             id: 1,
@@ -41,7 +42,8 @@ const getters = {
     videosSem1: state => state.videosSem1,
     videosSem2: state => state.videosSem2,
     videosOther: state => state.videosOther,
-    allVideos: state => state.videosSem1.concat(state.videosSem2).concat(state.videosOther)
+    allVideos: state => state.videosSem1.concat(state.videosSem2).concat(state.videosOther),
+    videoAuthors: state => state.activeVideoAuthors
 }
 
 const actions = {
@@ -95,12 +97,29 @@ const actions = {
                 payload.preTitle = data.pretitle;
                 payload.title = data.title;
                 payload.description = data.description;
-                payload.author = data.author;
                 payload.materialUrl = data.materialUrl;
                 payload.quizId = data.quizId;
                 payload.fullVideoUrl = data.fullVideoUrl;
 
                commit('nothing', payload);
+            });
+        await Vue.axios.get('/video/' + payload.currentVideoId + '/authors')
+            .then((resp) => {
+                let data = resp.data;
+                payload.authors = [];
+
+                if (data && data.length > 0) {
+                    for (let i = 0; i < data.length; i++) {
+                        payload.authors.push({
+                            id : data[i].author._id,
+                            name: data[i].author.name,
+                            description: data[i].author.description,
+                            image: data[i].author.image
+                        })
+                    }
+                }
+
+                commit('updateActiveVideoAuthors', payload.authors);
             });
     },
     async loadFullAuthorDetails({commit}, payload) {
@@ -157,6 +176,10 @@ const mutations = {
     },
     updateActiveVideo(state, videoId) {
         state.activeVideo = videoId;
+    },
+    updateActiveVideoAuthors(state, authors) {
+        console.log(authors);
+        state.activeVideoAuthors = authors;
     },
     nothing(state, noth) {
         console.log(state + noth);

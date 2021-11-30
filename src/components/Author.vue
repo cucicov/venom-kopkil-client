@@ -163,22 +163,11 @@ export default {
   /*flex-wrap: wrap;*/
 }
 
-.video-content-description-right{
-  border-left: 1px solid #D4D7EE;
-  padding-left: 40px;
-  flex-grow: 1;
-}
-
 .video-content-description-text-title {
   color: #1B2CC1;
   font-size: 14px;
   line-height: 25px;
   text-align: left;
-}
-
-.video-content-description-left {
-  flex-grow: 1;
-  max-width: 70%;
 }
 
 .video-content-description-text-description {
@@ -198,12 +187,6 @@ export default {
   text-align: left;
   line-height: 25px;
   flex-basis: 100%;
-}
-
-.video-content-description-text-student-image {
-  text-align: left;
-  line-height: 25px;
-  margin-left: 20px;
 }
 
 .video-content-description-buttons {

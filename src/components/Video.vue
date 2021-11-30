@@ -36,6 +36,8 @@
                 {{description}}
               </div>
             </div>
+          </div>
+          <div class="video-content-description-right">
             <div class="video-content-description-buttons">
               <div class="first-header-button-wrapper">
                 <div class="first-header-button main" v-if="materialUrl !== undefined">
@@ -47,24 +49,33 @@
               </div>
             </div>
           </div>
-          <div class="video-content-description-right">
-            <div class="video-content-description-text-title">
+
+        </div>
+
+        <div class="video-content-description-wrapper">
+          <div class="video-content-description-left-2">
+            <div class="video-content-description-text-title-2">
               POVESTIT DE
             </div>
-            <div class="video-content-description-text-student-wrapper" v-on:click="gotoAuthor(authorId)">
-              <div class="video-content-description-text-student-text">
-                <b>{{authorName}}</b><br/>
-                {{authorDescription}}
-              </div>
-              <div class="video-content-description-text-student-image">
-                <v-img :src="authorImage"
-                       max-height="100"
-                       max-width="100">
-                </v-img>
+            <div class="video-content-description-student-box-wrapper">
+              <div v-for="author in authors" :key="author.id" class="video-content-description-student-box">
+                <div class="video-content-description-text-student-wrapper" v-on:click="gotoAuthor(author.id)">
+                  <div class="video-content-description-text-student-image">
+                    <v-img :src="author.image"
+                           height="100"
+                           width="100">
+                    </v-img>
+                  </div>
+                  <div class="video-content-description-text-student-text">
+                    <b>{{author.name}}</b><br/>
+                    {{author.description}}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -99,10 +110,6 @@ export default {
       preTitle: "pret",
       title: "title",
       description: undefined,
-      authorName: "auth",
-      authorId: "id",
-      authorDescription: "description",
-      authorImage: "https://picsum.photos/id/200/500",
       materialUrl: "url",
       quizId: "qid",
       fullVideoUrl: undefined
@@ -115,9 +122,15 @@ export default {
   computed: {
     previewVideos() {
       return this.$store.getters.allVideos;
+    },
+    authors() {
+      return this.$store.getters.videoAuthors;
     }
   },
   methods: {
+    scrollToTop() {
+      window.scrollTo(0,0);
+    },
     downloadMateriale(source) {
       if (source !== "") {
         console.log("download " + source);
@@ -168,10 +181,6 @@ export default {
               } else {
                 vm.description = payload.description;
               }
-              vm.authorName = payload.author.name;
-              vm.authorId = payload.author._id;
-              vm.authorDescription = payload.author.description;
-              vm.authorImage = payload.author.image;
               if (payload.materialUrl.length == 0) {
                 vm.materialUrl = undefined;
               } else {
@@ -207,6 +216,7 @@ export default {
     },
     gotoAuthor: function (authorId) {
       // console.log(authorId);
+      this.scrollToTop();
       this.$router.push({path: `/author/${authorId}`});
       // this.$router.go();
     },
@@ -284,14 +294,19 @@ export default {
 }
 
 .video-content-description-wrapper{
-  margin: 40px;
+  margin: 0 40px 40px 40px;
   display: flex;
   flex-direction: row;
   /*flex-wrap: wrap;*/
+
+}
+
+.first-header-button-wrapper {
+  display:flex;
+  flex-direction: column;
 }
 
 .video-content-description-right{
-  border-left: 1px solid #D4D7EE;
   padding-left: 40px;
   flex-grow: 1;
 }
@@ -303,9 +318,22 @@ export default {
   text-align: left;
 }
 
+.video-content-description-text-title-2 {
+  color: #1B2CC1;
+  font-size: 14px;
+  line-height: 25px;
+  text-align: left;
+  border-top: 1px solid #D4D7EE;
+  padding-top: 40px;
+}
+
 .video-content-description-left {
   flex-grow: 3;
   max-width: 70%;
+}
+
+.video-content-description-left-2 {
+  flex-grow: 1;
 }
 
 .video-content-description-text-description {
@@ -331,7 +359,7 @@ export default {
 .video-content-description-text-student-image {
   text-align: left;
   line-height: 25px;
-  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .video-content-description-buttons {
@@ -350,6 +378,15 @@ export default {
 
 .video-content-main {
   margin: 40px;
+}
+
+.video-content-description-student-box-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video-content-description-student-box {
+  width: 300px;
 }
 
 /*.video-header-courses-title {*/

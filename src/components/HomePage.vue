@@ -333,6 +333,7 @@ export default {
 .main button {
   background-color: #1B2CC1;
   color: white;
+  width: 100%;
 }
 
 .first-header-courses-wrapper {
