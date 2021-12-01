@@ -167,7 +167,7 @@ export default {
         },{
           id: 7,
           name: 'Vlad Bolocan',
-          role: 'șofer',
+          role: 'Director Tehnic',
           url: "./team/Vlad Bolocan_șofer.jpeg"
         }
       ]
