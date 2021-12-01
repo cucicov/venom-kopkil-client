@@ -15,20 +15,20 @@ export default {
     htmlAttrs: {
       lang: 'en-US'
     },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'description', content: 'În prima serie de lecții video, copiii din Sohatu ne povestesc despre primii oameni, despre viața cotidiană în Orientul Antic, despre meșteșugurile și credințele practicate atunci, despre felul în care oamenii se organizau în grupuri sociale' },
-      { name: 'viewport', content: 'user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width' },
-      { name: 'robots', content: 'index, follow' },
-      { name: 'og:title', content: 'Copiii explică istoria' },
-      { name: 'og:description', content: 'În prima serie de lecții video, copiii din Sohatu ne povestesc despre primii oameni, despre viața cotidiană în Orientul Antic, despre meșteșugurile și credințele practicate atunci, despre felul în care oamenii se organizau în grupuri sociale' },
-      { name: 'og:type', content: 'website' },
-      { name: 'og:url', content: 'https://copiiiexplicaistoria.ro' },
-      { name: 'og:image', content: 'https://venom-kopkil-server.herokuapp.com/videothumbnails/mainbg.png' },
-      { name: 'og:image:type', content: 'image/png' },
-      { name: 'og:image:width', content: '1920' },
-      { name: 'og:image:height', content: '1080' },
-    ]
+    // meta: [
+    //   { charset: 'utf-8' },
+    //   { name: 'description', content: '' },
+    //   { name: 'viewport', content: 'user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width' },
+    //   { name: 'robots', content: 'index, follow' },
+    //   { name: 'og:title', content: '' },
+    //   { name: 'og:description', content: 'În prima serie de lecții video, copiii din Sohatu ne povestesc despre primii oameni, despre viața cotidiană în Orientul Antic, despre meșteșugurile și credințele practicate atunci, despre felul în care oamenii se organizau în grupuri sociale' },
+    //   { name: 'og:type', content: 'website' },
+    //   { name: 'og:url', content: '' },
+    //   { name: 'og:image', content: '' },
+    //   { name: 'og:image:type', content: 'image/png' },
+    //   { name: 'og:image:width', content: '1920' },
+    //   { name: 'og:image:height', content: '1080' },
+    // ]
   },
 }
 </script>
