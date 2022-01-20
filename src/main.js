@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import axios from "axios";
 import vuetify from "@/plugins/vuetify";
+import VueAnalytics from 'vue-analytics';
 
 //Vuex store
 import store from './store'
@@ -13,6 +14,10 @@ Vue.axios = Vue.prototype.$http = axios.create({
   baseURL: 'https://venom-kopkil-server.herokuapp.com/api'
   // baseURL: 'http://localhost:8081/api' // TODO: take from parameter?
 })
+
+Vue.use(VueAnalytics, {
+  id: '300154294'
+});
 
 new Vue({
   store,
