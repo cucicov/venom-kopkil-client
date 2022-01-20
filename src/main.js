@@ -16,7 +16,8 @@ Vue.axios = Vue.prototype.$http = axios.create({
 })
 
 Vue.use(VueAnalytics, {
-  id: '300154294'
+  id: 'UA-217710004-1',
+  router
 });
 
 new Vue({
