@@ -65,7 +65,8 @@ const actions = {
                                 title: data[i].title,
                                 thumbnail: data[i].thumbnail,
                                 semester: data[i].semester,
-                                class: data[i].class
+                                class: data[i].class,
+                                order: data[i].order
                             });
                         }
                         i++;
@@ -79,12 +80,14 @@ const actions = {
                                 title: data[i].title,
                                 thumbnail: data[i].thumbnail,
                                 semester: data[i].semester,
-                                class: data[i].class
+                                class: data[i].class,
+                                order: data[i].order
                             })
                         }
                     }
                 }
 
+                payload.videos.sort((a, b) => (a.order > b.order) ? 1 : -1);
                commit('loadVideos', payload);
             });
     },
