@@ -22,10 +22,14 @@
     <div class="first-content-bg">
       <div class="first-content-wrapper">
         <div class="video-content-main" v-if="fullVideoUrl !== undefined">
-          <vue-core-video-player  width="100%" :src="fullVideoUrl"></vue-core-video-player>
+          <vue-core-video-player  width="100%"
+                                  :src="fullVideoUrl"
+                                  :autoplay="false"
+                                  @play="playFunc"
+                                  @pause="pauseFunc"></vue-core-video-player>
         </div>
 
-        <div class="video-content-description-wrapper-full">
+        <div v-if="description" class="video-content-description-wrapper-full">
           <div class="video-content-description-left">
             <div class="video-content-description-text">
               <div class="video-content-description-text-description">
@@ -43,6 +47,7 @@
 
 <script>
 import Footer from './Footer'
+import $ from "jquery";
 
 export default {
   name: 'Video',
@@ -89,6 +94,17 @@ export default {
       this.$router.push({path: `/`});
       // this.$router.go();
     },
+    playFunc: function() {
+      // BUGFIX: hide play button when starting playing to avoid it showing in full screen.
+      if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $( ".play-pause-layer" ).hide();
+      }
+    },
+    pauseFunc: function() {
+      if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $( ".play-pause-layer" ).show();
+      }
+    }
   },
   watch: {
     '$route.params.id' : function() {
@@ -110,7 +126,10 @@ export default {
     padding: 20px 20px 180px 20px;
   }
   .first-footer-team-content {
-    justify-content: space-around;
+    justify-content: flex-start;
+  }
+  .video-content-main {
+    /*margin-bottom: 40px;*/
   }
 }
 @media only screen and (min-width: 769px) {
@@ -118,7 +137,10 @@ export default {
     padding: 80px 80px 200px 80px;
   }
   .first-footer-team-content {
-    justify-content: space-between;
+    justify-content: flex-start;
+  }
+  .video-content-main {
+    margin: 40px;
   }
 }
 
@@ -157,7 +179,7 @@ export default {
 }
 
 .video-content-description-wrapper-full{
-  margin: 0 40px 40px 40px;
+  margin: 40px;
   display: flex;
   flex-direction: row;
   /*flex-wrap: wrap;*/
@@ -201,10 +223,6 @@ export default {
   display:flex;
   flex-direction: column;
   height: 100%;
-}
-
-.video-content-main {
-  margin: 40px;
 }
 
 /*.video-header-courses-title {*/

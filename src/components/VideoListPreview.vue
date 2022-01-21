@@ -4,7 +4,7 @@
       <div v-if="isMobile">
         <v-img :src="video.thumbnail" class="first-video-thumbnail-main-image"
                max-height="190"
-               max-width="260">
+               max-width="calc(100vw - 20px)">
           <div class="play-image" v-on:click="gotoVideo(video.fullVideoId, video.class)">&#9658;</div>
         </v-img>
       </div>
@@ -63,7 +63,11 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.first-content-videos-container div {
+  flex-grow: 1;
 }
 
 .first-content-video-title {
@@ -73,6 +77,6 @@ export default {
   line-height: 21px;
   text-align: left;
   margin: 20px 0px 50px 10px;
-  max-width: 320px;
+  max-width: 300px;
 }
 </style>

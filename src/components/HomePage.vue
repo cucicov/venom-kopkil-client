@@ -83,8 +83,8 @@
 
         <div class="first-footer-team-item" v-for="item in team" :key="item.id">
           <v-img :lazy-src="item.lazyUrl" :src="item.url"
-              max-height="190"
-              max-width="190">
+              height="200px"
+              width="200px">
           </v-img>
           <div class="first-footer-team-item-name">
             {{ item.name }}
@@ -114,8 +114,8 @@
 </template>
 
 <script>
-import Footer from './Footer'
-import VideoListPreview from './VideoListPreview'
+import Footer from './Footer';
+import VideoListPreview from './VideoListPreview';
 
 export default {
   name: 'HomePage',
@@ -209,6 +209,7 @@ export default {
     saveEmailNewsletter(email) {
       this.$store.dispatch('saveEmailNewsletter', email).then(() => {
         console.log("Email for newsletter saved.");
+        this.newsletter_email = '';
       })
     },
   },
@@ -225,22 +226,23 @@ export default {
     padding: 20px 20px 180px 20px;
   }
   .first-header-courses-wrapper {
-    padding: 0 20px 0 20px;
+    padding: 0px;
   }
   .first-content-wrapper {
-    margin: 0 20px 0 20px;
+    margin: 0px;
   }
   .first-footer-team {
-    padding: 80px 20px 0 20px;
+    padding-top: 80px;
   }
   .first-footer-team-content {
-    margin: 0 20px 20px 20px;
+    margin: 0;
+    padding: 40px;
   }
   .first-newsletter-email-wrapper input {
     padding: 5px 10px;
   }
   .first-footer-team-content {
-    justify-content: space-around;
+    justify-content: flex-start;
   }
   .v-expansion-panel-content__wrap {
     padding: 0 !important;
@@ -264,7 +266,7 @@ export default {
   }
 
   .first-footer-team-content {
-    justify-content: space-between;
+    justify-content: flex-start;
     margin: 0 80px 80px 80px;
     padding: 40px;
   }
@@ -472,7 +474,7 @@ export default {
 }
 
 .first-footer-team-item {
-  /*margin: 40px 20px 0px 20px;*/
+  margin: 0px 20px 0px 20px;
 }
 
 .first-video-thumbnail-main-image {

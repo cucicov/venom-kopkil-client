@@ -23,7 +23,11 @@
     <div class="first-content-bg">
       <div class="first-content-wrapper">
         <div class="video-content-main" v-if="fullVideoUrl !== undefined">
-          <vue-core-video-player  width="100%" :src="fullVideoUrl"></vue-core-video-player>
+          <vue-core-video-player  width="100%"
+                                  :src="fullVideoUrl"
+                                  :autoplay="false"
+                                  @play="playFunc"
+                                  @pause="pauseFunc"></vue-core-video-player>
         </div>
 
         <div class="video-content-description-wrapper">
@@ -101,6 +105,7 @@
 import Footer from './Footer'
 import VideoListPreview from "@/components/VideoListPreview";
 import axios from "axios";
+import $ from 'jquery';
 
 export default {
   name: 'Video',
@@ -224,6 +229,17 @@ export default {
       this.$router.push({path: `/`});
       // this.$router.go();
     },
+    playFunc: function() {
+      // BUGFIX: hide play button when starting playing to avoid it showing in full screen.
+      if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $( ".play-pause-layer" ).hide();
+      }
+    },
+    pauseFunc: function() {
+      if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $( ".play-pause-layer" ).show();
+      }
+    }
   },
   watch: {
     '$route.params.id' : function() {
@@ -247,16 +263,42 @@ export default {
     padding: 20px 20px 180px 20px;
   }
   .first-footer-team-content {
-    justify-content: space-around;
+    justify-content: flex-start;
+  }
+  .video-content-description-left {
+    max-width: 100%;
+  }
+  .video-content-description-right{
+    padding-left: 0px;
+    flex-grow: 1;
+  }
+  .video-content-main {
+    /*margin-bottom: 40px;*/
   }
 }
+
 @media only screen and (min-width: 769px) {
   .video-header-wrapper {
     padding: 80px 80px 200px 80px;
   }
   .first-footer-team-content {
-    justify-content: space-between;
+    justify-content: flex-start;
   }
+  .video-content-description-left {
+    flex-grow: 3;
+    max-width: 70%;
+  }
+  .video-content-description-right{
+    padding-left: 40px;
+    flex-grow: 1;
+  }
+  .video-content-main {
+    margin: 40px;
+  }
+}
+
+.first-header-courses-wrapper {
+  background: #D4D7EE;
 }
 
 .video-header-wrapper {
@@ -294,21 +336,15 @@ export default {
 }
 
 .video-content-description-wrapper{
-  margin: 0 40px 40px 40px;
+  margin: 40px;
   display: flex;
   flex-direction: row;
-  /*flex-wrap: wrap;*/
-
+  flex-wrap: wrap;
 }
 
 .first-header-button-wrapper {
   display:flex;
   flex-direction: column;
-}
-
-.video-content-description-right{
-  padding-left: 40px;
-  flex-grow: 1;
 }
 
 .video-content-description-text-title {
@@ -327,11 +363,6 @@ export default {
   padding-top: 40px;
 }
 
-.video-content-description-left {
-  flex-grow: 3;
-  max-width: 70%;
-}
-
 .video-content-description-left-2 {
   flex-grow: 1;
 }
@@ -339,7 +370,7 @@ export default {
 .video-content-description-text-description {
   text-align: left;
   margin-top: 10px;
-  margin-right: 40px;
+  /*margin-right: 40px;*/
   line-height: 25px;
 }
 
@@ -374,10 +405,6 @@ export default {
   display:flex;
   flex-direction: column;
   height: 100%;
-}
-
-.video-content-main {
-  margin: 40px;
 }
 
 .video-content-description-student-box-wrapper {
