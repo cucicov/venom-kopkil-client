@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="first-header-wrapper">
-      <div class="first-header-logo">copiii explică istoria</div>
+      <div class="first-header-logo">
+        <v-img src="./logo.svg">
+        </v-img>
+      </div>
       <div class="first-header-title-big">Misiune</div>
       <div class="first-header-description">
         Credem că istoria poate fi mult mai captivantă pentru copii atunci când e povestită tot de copii. Așa
@@ -21,7 +24,7 @@
     <div class="first-header-courses-wrapper">
       <div class="first-header-courses">
         <div class="first-header-courses-title" ref="coursesRef">Cursuri</div>
-        <div>
+        <div style="margin-top: -5px;"> <!--TODO: this is a workaround. find a better way to center vertically the button -->
           <select v-model="activeClass" @change="getVideosByClass()">
             <option v-for="option in options" v-bind:value="option.key" v-bind:key="option.key">
               {{ option.text }}

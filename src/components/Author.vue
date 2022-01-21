@@ -1,7 +1,10 @@
 <template>
   <div class="video-wrapper">
     <div class="video-header-wrapper">
-      <div class="first-header-logo" v-on:click="gotoMainPage()">copiii explică istoria</div> <!-- TODO: extract header in component?-->
+      <div class="first-header-logo" v-on:click="gotoMainPage()">
+        <v-img src="./logo.svg">
+        </v-img>
+      </div> <!-- TODO: extract header in component?-->
     </div>
 
     <div class="first-header-courses-wrapper">
