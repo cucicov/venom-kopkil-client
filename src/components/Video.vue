@@ -265,9 +265,6 @@ export default {
   .video-header-wrapper {
     padding: 20px 20px 180px 20px;
   }
-  .first-footer-team-content {
-    justify-content: flex-start;
-  }
   .video-content-description-left {
     max-width: 100%;
   }
@@ -284,9 +281,6 @@ export default {
   .video-header-wrapper {
     padding: 80px 80px 200px 80px;
   }
-  .first-footer-team-content {
-    justify-content: flex-start;
-  }
   .video-content-description-left {
     flex-grow: 3;
     max-width: 70%;
@@ -299,7 +293,10 @@ export default {
     margin: 40px;
   }
 }
-
+.first-footer-team-content {
+  justify-content: flex-start;
+  padding: 0px;
+}
 .first-header-courses-wrapper {
   background: #D4D7EE;
 }
@@ -402,6 +399,7 @@ export default {
 
 .first-footer-team-item {
   flex-basis: 100%;
+  margin: 0px;
 }
 
 .video-wrapper {

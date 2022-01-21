@@ -128,9 +128,6 @@ export default {
   .video-header-wrapper {
     padding: 20px 20px 180px 20px;
   }
-  .first-footer-team-content {
-    justify-content: flex-start;
-  }
   .video-content-main {
     /*margin-bottom: 40px;*/
   }
@@ -139,14 +136,10 @@ export default {
   .video-header-wrapper {
     padding: 80px 80px 200px 80px;
   }
-  .first-footer-team-content {
-    justify-content: flex-start;
-  }
   .video-content-main {
     margin: 40px;
   }
 }
-
 .video-header-wrapper {
   display: flex;
   background: #D4D7EE;
