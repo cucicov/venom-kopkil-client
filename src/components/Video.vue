@@ -1,9 +1,11 @@
 <template>
   <div class="video-wrapper">
-    <div class="video-header-wrapper">
-      <div class="first-header-logo" v-on:click="gotoMainPage()">
-        <v-img src="./logo.svg">
-        </v-img>
+    <div class="pre-video-header-wrapper">
+      <div class="video-header-wrapper">
+        <div class="first-header-logo" v-on:click="gotoMainPage()">
+          <v-img src="./logo.svg">
+          </v-img>
+        </div>
       </div>
     </div>
 
@@ -279,7 +281,10 @@ export default {
 
 @media only screen and (min-width: 769px) {
   .video-header-wrapper {
-    padding: 80px 80px 200px 80px;
+    padding: 80px 0px 200px 0px;
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .video-content-description-left {
     flex-grow: 3;
@@ -291,6 +296,10 @@ export default {
   }
   .video-content-main {
     margin: 40px;
+  }
+  .pre-video-header-wrapper{
+    margin-left: 80px;
+    margin-right: 80px;
   }
 }
 .first-footer-team-content {
@@ -333,6 +342,9 @@ export default {
   padding: 20px;
   flex-basis: 100%;
   margin-top: -120px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .video-content-description-wrapper{
@@ -399,13 +411,14 @@ export default {
 
 .first-footer-team-item {
   flex-basis: 100%;
-  margin: 0px;
+  margin: 20px;
 }
 
 .video-wrapper {
   display:flex;
   flex-direction: column;
   height: 100%;
+  background: #D4D7EE;
 }
 
 .video-content-description-student-box-wrapper {

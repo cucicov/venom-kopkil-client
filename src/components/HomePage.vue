@@ -1,22 +1,24 @@
 <template>
   <div>
     <div class="first-header-wrapper">
-      <div class="first-header-logo">
-        <v-img src="./logo.svg">
-        </v-img>
-      </div>
-      <div class="first-header-title-big">Misiune</div>
-      <div class="first-header-description">
-        Credem că istoria poate fi mult mai captivantă pentru copii atunci când e povestită tot de copii. Așa
-        că i-am scos pe elevii Școlii Gimnaziale nr.1 din Sohatu, jud Călărași la joacă și i-am rugat să ne
-        explice câteva lucruri despre începuturile istoriei în Orientul Antic.
-      </div>
-      <div class="first-header-button-wrapper">
-        <div class="first-header-button main">
-          <button v-on:click="scrollTo('coursesRef')">Spre cursuri</button>
+      <div class="first-header-wrapper-fixed-size">
+        <div class="first-header-logo">
+          <v-img src="./logo.svg">
+          </v-img>
         </div>
-        <div class="first-header-button">
-          <button v-on:click="scrollTo('teamRef')">Cunoaște echipa</button>
+        <div class="first-header-title-big">Misiune</div>
+        <div class="first-header-description">
+          Credem că istoria poate fi mult mai captivantă pentru copii atunci când e povestită tot de copii. Așa
+          că i-am scos pe elevii Școlii Gimnaziale nr.1 din Sohatu, jud Călărași la joacă și i-am rugat să ne
+          explice câteva lucruri despre începuturile istoriei în Orientul Antic.
+        </div>
+        <div class="first-header-button-wrapper">
+          <div class="first-header-button main">
+            <button v-on:click="scrollTo('coursesRef')">Spre cursuri</button>
+          </div>
+          <div class="first-header-button">
+            <button v-on:click="scrollTo('teamRef')">Cunoaște echipa</button>
+          </div>
         </div>
       </div>
     </div>
@@ -79,7 +81,11 @@
     </div>
 
     <div class="first-footer-team" ref="teamRef">
-      <div class="first-footer-team-title">Echipa</div>
+      <div class="first-footer-team-title">
+        <div>Echipa</div>
+        <div></div>
+      </div>
+
     </div>
     <div class="first-footer-team-body">
       <div class="first-footer-team-content">
@@ -234,18 +240,20 @@ export default {
   .first-content-wrapper {
     margin: 0px;
   }
+  .first-content-bg {
+    padding: 0;
+  }
   .first-footer-team {
     padding-top: 80px;
   }
   .first-footer-team-content {
     margin: 0;
     padding: 40px;
+    justify-content: flex-start;
+    justify-content: center;
   }
   .first-newsletter-email-wrapper input {
     padding: 5px 10px;
-  }
-  .first-footer-team-content {
-    justify-content: flex-start;
   }
   .v-expansion-panel-content__wrap {
     padding: 0 !important;
@@ -259,7 +267,10 @@ export default {
     padding: 0 80px 0 80px;
   }
   .first-content-wrapper {
-    margin: 0 80px 0 80px;
+    /*margin: 0 80px 0 80px;*/
+  }
+  .first-content-bg {
+    padding: 0 80px;
   }
   .first-footer-team {
     padding: 80px 80px 0 80px;
@@ -276,6 +287,12 @@ export default {
   .header-top-line {
     width: 300px;
   }
+
+  .first-header-wrapper-fixed-size {
+    width: 1280px;
+    margin: auto;
+  }
+
 }
 
 .first-header-wrapper {
@@ -359,6 +376,9 @@ export default {
   padding: 20px;
   flex-basis: 100%;
   margin-top: -100px;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .first-header-courses-title {
@@ -384,9 +404,12 @@ export default {
 .first-content-wrapper {
   display:flex;
   flex-direction: column;
-  border-bottom: 10px solid #CCF2F4;
-  border-left: 10px solid #CCF2F4;
-  border-right: 10px solid #CCF2F4;
+  border-bottom: 10px solid #D4D7EE;
+  border-left: 10px solid #D4D7EE;
+  border-right: 10px solid #D4D7EE;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .first-content-description {
@@ -469,9 +492,9 @@ export default {
 .first-footer-team-content {
   display: flex;
   flex-direction: row;
-  border-bottom: 10px solid #CCF2F4;
-  border-left: 10px solid #CCF2F4;
-  border-right: 10px solid #CCF2F4;
+  border-bottom: 10px solid #D4D7EE;
+  border-left: 10px solid #D4D7EE;
+  border-right: 10px solid #D4D7EE;
   text-align: left;
   flex-wrap: wrap;
 }
