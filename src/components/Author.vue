@@ -58,9 +58,9 @@ export default {
   name: 'Video',
   data() {
     return {
-      preTitle: "pret",
-      name: "aaa",
-      description: "desc",
+      preTitle: "loading..",
+      name: "loading..",
+      description: "loading..",
       fullVideoUrl: undefined
     }
   },
