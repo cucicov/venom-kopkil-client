@@ -90,7 +90,10 @@
 
 
     <div class="first-footer-team" v-if="hasRecommendations">
-      <div class="first-footer-team-title">Recomandări</div>
+      <div class="first-footer-team-title">
+        <div>Recomandări</div>
+        <div></div>
+      </div>
     </div>
     <div class="first-footer-team-body" v-if="hasRecommendations">
       <div class="first-footer-team-content">
@@ -164,7 +167,7 @@ export default {
       let vm = this;
       const payload = {
         classOf: this.$store.getters.activeClass,
-        videosLimit: 3, // limit recommended videos to 3
+        videosLimit: 6, // limit recommended videos to 3
         currentVideoId: this.$store.getters.activeVideo,
       }
       this.$store.dispatch('loadVideos', payload)
@@ -264,6 +267,14 @@ export default {
 
 <style scoped>
 @media only screen and (max-width: 768px) {
+}
+@media only screen and (min-width: 769px) {
+
+}
+
+
+
+@media only screen and (max-width: 768px) {
   .video-header-wrapper {
     padding: 20px 20px 180px 20px;
   }
@@ -276,6 +287,12 @@ export default {
   }
   .video-content-main {
     /*margin-bottom: 40px;*/
+  }
+  .first-content-videos-container {
+    justify-content: center;
+  }
+  .first-content-videos-container div {
+    /*margin: 0;*/
   }
 }
 
@@ -300,6 +317,13 @@ export default {
   .pre-video-header-wrapper{
     margin-left: 80px;
     margin-right: 80px;
+  }
+  .first-content-videos-container {
+    height: 270px;
+    overflow: hidden;
+  }
+  .first-content-videos-container div {
+    /*margin-right: 40px;*/
   }
 }
 .first-footer-team-content {

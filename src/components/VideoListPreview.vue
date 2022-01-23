@@ -63,11 +63,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.first-content-videos-container div {
-  flex-grow: 1;
+  justify-content: space-between;
 }
 
 .first-content-video-title {
