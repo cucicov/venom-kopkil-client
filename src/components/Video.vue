@@ -120,11 +120,11 @@ export default {
   data() {
     return {
       hasRecommendations: true,
-      preTitle: "pret",
-      title: "title",
+      preTitle: "loading..",
+      title: "loading..",
       description: undefined,
-      materialUrl: "url",
-      quizId: "qid",
+      materialUrl: "loading..",
+      quizId: "loading..",
       fullVideoUrl: undefined
     }
   },
@@ -267,14 +267,6 @@ export default {
 
 <style scoped>
 @media only screen and (max-width: 768px) {
-}
-@media only screen and (min-width: 769px) {
-
-}
-
-
-
-@media only screen and (max-width: 768px) {
   .video-header-wrapper {
     padding: 20px 20px 180px 20px;
   }
@@ -293,6 +285,9 @@ export default {
   }
   .first-content-videos-container div {
     /*margin: 0;*/
+  }
+  .first-footer-team-item {
+    margin: 20px 0px 20px 0px;
   }
 }
 
@@ -319,11 +314,14 @@ export default {
     margin-right: 80px;
   }
   .first-content-videos-container {
-    height: 270px;
+    height: 260px;
     overflow: hidden;
   }
   .first-content-videos-container div {
     /*margin-right: 40px;*/
+  }
+  .first-footer-team-item {
+    margin: 20px 40px 20px 40px;
   }
 }
 .first-footer-team-content {
@@ -435,7 +433,6 @@ export default {
 
 .first-footer-team-item {
   flex-basis: 100%;
-  margin: 20px;
 }
 
 .video-wrapper {
