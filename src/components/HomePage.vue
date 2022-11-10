@@ -47,7 +47,7 @@
           evoluat oamenii în neolitic? Să începem cu începutul.
         </div>
         <v-expansion-panels accordion multiple v-model="panelcontentvideos">
-          <v-expansion-panel elevation-0>
+          <v-expansion-panel expand="false" elevation-0>
             <div class="header-top-line"></div>
             <v-expansion-panel-header>
               Sezonul I
