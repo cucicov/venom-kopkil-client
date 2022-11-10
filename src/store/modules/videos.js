@@ -9,7 +9,7 @@ const state = {
             id: 1,
             fullVideoId: 101,
             title: "Loading...",
-            thumbnail: "../../assets/loading.gif",
+            thumbnail: "../../loading.gif",
             semester: 1,
             class: 1
         }
@@ -19,7 +19,7 @@ const state = {
             id: 2,
             fullVideoId: 101,
             title: "Loading...",
-            thumbnail: "../../assets/loading.gif",
+            thumbnail: "../../loading.gif",
             semester: 2,
             class: 1
         }
@@ -29,7 +29,7 @@ const state = {
             id: 3,
             fullVideoId: 101,
             title: "Loading...",
-            thumbnail: "../../assets/loading.gif",
+            thumbnail: "../../loading.gif",
             semester: -1,
             class: 1
         }
