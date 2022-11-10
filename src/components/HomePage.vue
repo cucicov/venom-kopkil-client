@@ -50,7 +50,7 @@
           <v-expansion-panel expand elevation-0>
             <div class="header-top-line"></div>
             <v-expansion-panel-header>
-              Semestrul I
+              Sezonul I
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <VideoListPreview :is-mobile="isMobile()" :videos="videos1"/>
