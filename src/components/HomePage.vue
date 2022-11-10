@@ -47,7 +47,7 @@
           evoluat oamenii în neolitic? Să începem cu începutul.
         </div>
         <v-expansion-panels accordion multiple v-model="panelcontentvideos">
-          <v-expansion-panel expand elevation-0>
+          <v-expansion-panel elevation-0>
             <div class="header-top-line"></div>
             <v-expansion-panel-header>
               Sezonul I
@@ -57,15 +57,15 @@
             </v-expansion-panel-content>
 
           </v-expansion-panel>
-<!--          <v-expansion-panel elevation-0>-->
-<!--            <div class="header-top-line"></div>-->
-<!--            <v-expansion-panel-header>-->
-<!--              Semestrul II-->
-<!--            </v-expansion-panel-header>-->
-<!--            <v-expansion-panel-content>-->
-<!--              <VideoListPreview :is-mobile="isMobile()" :videos="videos2"/>-->
-<!--            </v-expansion-panel-content>-->
-<!--          </v-expansion-panel>-->
+          <v-expansion-panel expand elevation-0>
+            <div class="header-top-line"></div>
+            <v-expansion-panel-header>
+              Sezonul II
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <VideoListPreview :is-mobile="isMobile()" :videos="videos2"/>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
         </v-expansion-panels>
       </div>
     </div>
