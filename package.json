@@ -1,6 +1,9 @@
 {
   "name": "copiii-explica-istoria",
   "version": "0.2.0",
+  "engines": {
+    "node": "16.x"
+  },
   "private": true,
   "main": "server.js",
   "scripts": {
