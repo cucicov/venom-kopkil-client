@@ -8,8 +8,8 @@ const state = {
         {
             id: 1,
             fullVideoId: 101,
-            title: "video title 1",
-            thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+            title: "Loading...",
+            thumbnail: "https://tenor.com/view/loading-loading-forever-bobux-loader-gif-18368917",
             semester: 1,
             class: 1
         }
@@ -18,8 +18,8 @@ const state = {
         {
             id: 2,
             fullVideoId: 101,
-            title: "video title 1",
-            thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+            title: "Loading...",
+            thumbnail: "https://tenor.com/view/loading-loading-forever-bobux-loader-gif-18368917",
             semester: 2,
             class: 1
         }
@@ -28,8 +28,8 @@ const state = {
         {
             id: 3,
             fullVideoId: 101,
-            title: "video title 1",
-            thumbnail: "http://localhost:8081/videothumbnails/mondrian.jpg",
+            title: "Loading...",
+            thumbnail: "https://tenor.com/view/loading-loading-forever-bobux-loader-gif-18368917",
             semester: -1,
             class: 1
         }
