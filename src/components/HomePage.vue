@@ -134,7 +134,7 @@ export default {
   },
   data() {
     return {
-      panelcontentvideos: [1], // keep only first panel expanded.
+      panelcontentvideos: [0], // keep only first panel expanded.
       activeClass: 1,
       newsletter_email: '',
       snackbar: false,
