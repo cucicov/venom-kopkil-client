@@ -8,9 +8,7 @@
         </div>
         <div class="first-header-title-big">Misiune</div>
         <div class="first-header-description">
-          Credem că istoria poate fi mult mai captivantă pentru copii atunci când e povestită tot de copii. Așa
-          că i-am scos pe elevii Școlii Gimnaziale nr.1 din Sohatu, jud Călărași la joacă și i-am rugat să ne
-          explice câteva lucruri despre începuturile istoriei în Orientul Antic.
+          Credem că istoria poate fi mult mai captivantă pentru copii atunci când e povestită tot de copii. Așa că i-am scos pe elevii Școlii Gimnaziale nr.1 din Sohatu, jud Călărași la joacă și i-am rugat să ne explice câteva lucruri interesante despre începuturile istoriei în Orientul Antic și despre frumusețea și grandoarea civilizațiilor grecești și romane.
         </div>
         <div class="first-header-button-wrapper">
           <div class="first-header-button main">
@@ -39,12 +37,13 @@
     <div class="first-content-bg">
       <div class="first-content-wrapper">
         <div class="first-content-description">
-          În prima serie de lecții video, copiii din Sohatu ne povestesc despre primii oameni, despre viața
-          cotidiană în Orientul Antic, despre meșteșugurile și credințele practicate atunci, despre felul în care
-          oamenii se organizau în grupuri sociale, despre construcțiile lor impresionante și despre legile
-          după care se guvernau. Care este cel mai vechi schelet uman descoperit de cercetători? Cine a
-          fost Ötzi? Ce este Turnul Babel? Ce sunt pagodele? Ce animale mumificau egiptenii? Cum au
-          evoluat oamenii în neolitic? Să începem cu începutul.
+<!--          În prima serie de lecții video, copiii din Sohatu ne povestesc despre primii oameni, despre viața-->
+<!--          cotidiană în Orientul Antic, despre meșteșugurile și credințele practicate atunci, despre felul în care-->
+<!--          oamenii se organizau în grupuri sociale, despre construcțiile lor impresionante și despre legile-->
+<!--          după care se guvernau. Care este cel mai vechi schelet uman descoperit de cercetători? Cine a-->
+<!--          fost Ötzi? Ce este Turnul Babel? Ce sunt pagodele? Ce animale mumificau egiptenii? Cum au-->
+<!--          evoluat oamenii în neolitic? Să începem cu începutul.-->
+          În cea de-a doua serie de lecții video, elevii din Sohatu ne povestesc câteva lucruri despre Antichitatea greacă și romană, despre viața cotidiană din polisul grec, despre ocupațiile și meșteșugurile vechilor greci, despre apetența lor pentru războaie dar și pentru artă și literatură, despre cel mai important eveniment socio-cultural din Grecia Antică, despre legendele grecești și adevărul din spatele lor și despre fondarea Romei, răspândirea marii civilizații romane în interiorul coloniilor, zei și cum au fost înlocuiți ei de către creștinism. Să începem.
         </div>
         <v-expansion-panels accordion multiple v-model="panelcontentvideos">
           <v-expansion-panel expand elevation-0>
@@ -178,6 +177,26 @@ export default {
           name: 'Vlad Bolocan',
           role: 'Director Tehnic',
           url: "./team/Vlad Bolocan_șofer.jpeg"
+        },{
+          id: 8,
+          name: 'Vlad Bâscă',
+          role: 'Director de imagine',
+          url: "./team/VladBasca.jpg"
+        },{
+          id: 9,
+          name: 'Letiția Ștefănescu',
+          role: 'Editor',
+          url: "./team/LetitiaStefanescu.jpg"
+        },{
+          id: 10,
+          name: 'Hara Alexandra Mosteanu',
+          role: 'Fotograf de platou',
+          url: "./team/HaraAlexandraMosteanu.jpg"
+        },{
+          id: 11,
+          name: 'Cătălina Murariu',
+          role: 'Comunicare & PR',
+          url: "./team/CatalinaMurariu.jpg"
         }
       ]
     }
