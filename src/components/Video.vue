@@ -134,7 +134,7 @@ export default {
   },
   computed: {
     previewVideos() {
-      return this.$store.getters.allVideos;
+      return this.$store.getters.videosSem2;
     },
     authors() {
       return this.$store.getters.videoAuthors;
