@@ -19,8 +19,10 @@
         </v-img>
       </div>
       <div>
-        <v-img src="./vt_logo.svg">
-        </v-img>
+        <a href="http://verytheory.com/">
+          <v-img src="./vt_logo.svg">
+          </v-img>
+        </a>
       </div>
     </div>
 
