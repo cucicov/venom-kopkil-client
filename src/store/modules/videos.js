@@ -30,7 +30,7 @@ const state = {
             fullVideoId: 101,
             title: "Loading...",
             thumbnail: "../../loading.gif",
-            semester: 2,
+            semester: -1,
             class: 1
         }
     ]
