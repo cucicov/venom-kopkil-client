@@ -24,6 +24,16 @@ const state = {
             class: 1
         }
     ],
+    videosSem3: [
+        {
+            id: 3,
+            fullVideoId: 101,
+            title: "Loading...",
+            thumbnail: "../../loading.gif",
+            semester: 2,
+            class: 1
+        }
+    ],
     videosOther: [
         {
             id: 3,
@@ -41,8 +51,9 @@ const getters = {
     activeVideo: state => state.activeVideo,
     videosSem1: state => state.videosSem1,
     videosSem2: state => state.videosSem2,
+    videosSem3: state => state.videosSem3,
     videosOther: state => state.videosOther,
-    allVideos: state => state.videosSem1.concat(state.videosSem2).concat(state.videosOther),
+    allVideos: state => state.videosSem1.concat(state.videosSem2).concat(state.videosSem3).concat(state.videosOther),
     videoAuthors: state => state.activeVideoAuthors
 }
 
@@ -156,6 +167,7 @@ const mutations = {
     loadVideos(state, payload) {
         let sem1 = [];
         let sem2 = [];
+        let sem3 = [];
         let other = [];
 
         // filter out videos for semester 1 and semester 2.
@@ -165,6 +177,8 @@ const mutations = {
                 sem1.push(currentVideo);
             } else if (currentVideo.semester == 2) {
                 sem2.push(currentVideo);
+            } else if (currentVideo.semester == 3) {
+                sem3.push(currentVideo);
             } else {
                 other.push(currentVideo);
             }
@@ -172,6 +186,7 @@ const mutations = {
 
         state.videosSem1 = sem1;
         state.videosSem2 = sem2;
+        state.videosSem3 = sem3;
         state.videosOther = other;
     },
     updateActiveClass(state, classId) {

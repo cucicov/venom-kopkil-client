@@ -65,6 +65,15 @@
               <VideoListPreview :is-mobile="isMobile()" :videos="videos2"/>
             </v-expansion-panel-content>
           </v-expansion-panel>
+          <v-expansion-panel expand elevation-0>
+            <div class="header-top-line"></div>
+            <v-expansion-panel-header>
+              Sezonul III
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <VideoListPreview :is-mobile="isMobile()" :videos="videos3"/>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
         </v-expansion-panels>
       </div>
     </div>
@@ -207,6 +216,9 @@ export default {
     },
     videos2() {
       return this.$store.getters.videosSem2;
+    },
+    videos3() {
+      return this.$store.getters.videosSem3;
     }
   },
   methods: {
