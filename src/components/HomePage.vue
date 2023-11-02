@@ -21,9 +21,9 @@
       </div>
     </div>
 
-<!--    <div class="first-header-courses-wrapper">-->
-<!--      <div class="first-header-courses">-->
-<!--        <div class="first-header-courses-title" ref="coursesRef">Cursuri</div>-->
+    <div class="first-header-courses-wrapper">
+      <div class="first-header-courses">
+        <div class="first-header-courses-title" ref="coursesRef">Cursuri</div>
 <!--        <div style="margin-top: -5px;"> &lt;!&ndash;TODO: this is a workaround. find a better way to center vertically the button &ndash;&gt;-->
 <!--          <select v-model="activeClass" @change="getVideosByClass()">-->
 <!--            <option v-for="option in options" v-bind:value="option.key" v-bind:key="option.key">-->
@@ -31,8 +31,8 @@
 <!--            </option>-->
 <!--          </select>-->
 <!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+      </div>
+    </div>
 
     <div class="first-content-bg">
       <div class="first-content-wrapper">
