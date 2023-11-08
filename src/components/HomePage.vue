@@ -174,38 +174,48 @@ export default {
         },{
           id: 5,
           name: 'Ion David Pirneci',
-          role: 'Profesor de istorie',
+          role: 'Profesor de istorie, ediția I și II',
           url: "./team/Ionuț Pirneci_profesor de istorie.jpg"
         },{
           id: 6,
+          name: 'Radu Mihai Murariu',
+          role: 'Profesor de istorie, ediția III',
+          url: "./team/radu_mihai_murariu_prof.jpg"
+        },{
+          id: 7,
+          name: 'Ovidiu',
+          role: 'Profesor de istorie, ediția III',
+          url: "./team/generic-person.png"
+        },{
+          id: 8,
           name: 'Matei Budeș',
           role: 'Director de imagine',
           url: "./team/Matei Budeș_ director de imagine.jpeg"
         },{
-          id: 7,
-          name: 'Vlad Bolocan',
-          role: 'Director Tehnic',
-          url: "./team/Vlad Bolocan_șofer.jpeg"
-        },{
-          id: 8,
+          id: 9,
           name: 'Vlad Bâscă',
           role: 'Director de imagine',
           url: "./team/VladBasca.jpg"
         },{
-          id: 9,
+          id: 10,
           name: 'Letiția Ștefănescu',
           role: 'Editor',
           url: "./team/LetitiaStefanescu.jpg"
         },{
-          id: 10,
+          id: 11,
           name: 'Hara Alexandra Mosteanu',
           role: 'Fotograf de platou',
           url: "./team/HaraAlexandraMosteanu.jpg"
         },{
-          id: 11,
+          id: 12,
           name: 'Cătălina Murariu',
           role: 'Comunicare & PR',
           url: "./team/CatalinaMurariu.jpg"
+        },{
+          id: 13,
+          name: 'Andreea',
+          role: 'Asistent producție',
+          url: "./team/generic-person.png"
         }
       ]
     }
