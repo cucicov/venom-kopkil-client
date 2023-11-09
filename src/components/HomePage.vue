@@ -54,6 +54,14 @@
               Sezonul II
             </v-expansion-panel-header>
             <v-expansion-panel-content>
+              <div class="first-content-description">
+                  În prima serie de lecții video, copiii din Sohatu ne povestesc despre primii oameni, despre viața
+                  cotidiană în Orientul Antic, despre meșteșugurile și credințele practicate atunci, despre felul în care
+                  oamenii se organizau în grupuri sociale, despre construcțiile lor impresionante și despre legile
+                  după care se guvernau. Care este cel mai vechi schelet uman descoperit de cercetători? Cine a
+                  fost Ötzi? Ce este Turnul Babel? Ce sunt pagodele? Ce animale mumificau egiptenii? Cum au
+                  evoluat oamenii în neolitic? Să începem cu începutul.
+              </div>
               <VideoListPreview :is-mobile="isMobile()" :videos="videos2"/>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -145,7 +153,7 @@ export default {
   },
   data() {
     return {
-      panelcontentvideos: [2], // keep only first panel expanded.
+      panelcontentvideos: [0], // keep only first panel expanded.
       activeClass: 1,
       newsletter_email: '',
       snackbar: false,
@@ -155,11 +163,6 @@ export default {
       ],
       team: [
         {
-          id: 1,
-          name: 'Alina Constantinescu',
-          role: 'Manager proiect',
-          url: "./team/Alina_Constantinescu_manager_proiect.jpg"
-        },{
           id: 2,
           name: 'Andreea Tudor',
           role: 'Responsabil financiar',
@@ -167,10 +170,10 @@ export default {
         },{
           id: 3,
           name: 'Cristina Baciu',
-          role: 'Editor',
+          role: 'Editor ediția I',
           url: "./team/Cristina Baciu_editor.jpg"
         },{
-          id: 99,
+          id: 4,
           name: 'Eliza Zdru',
           role: 'Regizor/producător',
           url: "./team/Eliza Zdru_producator _ regizor.JPG"
@@ -186,34 +189,24 @@ export default {
           url: "./team/radu_mihai_murariu_prof.jpg"
         },{
           id: 7,
-          name: 'Ovidiu',
+          name: 'Ovidiu Iordache',
           role: 'Profesor de istorie, ediția III',
-          url: "./team/generic-person.png"
+          url: "./team/ovidiu_iordache_prof_3.jpeg"
         },{
           id: 8,
           name: 'Matei Budeș',
-          role: 'Director de imagine',
+          role: 'Operator ediția I',
           url: "./team/Matei Budeș_ director de imagine.jpeg"
         },{
           id: 9,
           name: 'Vlad Bâscă',
-          role: 'Director de imagine',
+          role: 'Operator edițiile II și III',
           url: "./team/VladBasca.jpg"
         },{
           id: 10,
           name: 'Letiția Ștefănescu',
-          role: 'Editor',
+          role: 'Editor edițiile II și III',
           url: "./team/LetitiaStefanescu.jpg"
-        },{
-          id: 11,
-          name: 'Hara Alexandra Mosteanu',
-          role: 'Fotograf de platou',
-          url: "./team/HaraAlexandraMosteanu.jpg"
-        },{
-          id: 12,
-          name: 'Cătălina Murariu',
-          role: 'Comunicare & PR',
-          url: "./team/CatalinaMurariu.jpg"
         },{
           id: 13,
           name: 'Andreea',
