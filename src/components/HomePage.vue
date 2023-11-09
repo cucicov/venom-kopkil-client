@@ -6,9 +6,10 @@
           <v-img src="./logo.svg">
           </v-img>
         </div>
-        <div class="first-header-title-big">Misiune</div>
+        <div class="first-header-title-big">Istoria reloaded</div>
         <div class="first-header-description">
-          Credem că istoria poate fi mult mai captivantă pentru copii atunci când e povestită tot de copii. Așa că i-am scos pe elevii Școlii Gimnaziale nr.1 din Sohatu, jud Călărași la joacă și i-am rugat să ne explice câteva lucruri interesante despre începuturile istoriei în Orientul Antic și despre frumusețea și grandoarea civilizațiilor grecești și romane.
+          Ce-ar fi dacă istoria n-ar mai fi materia aceea greoaie și pictisitoare care abundă în date și informații greu de pătruns și de reținut și ar deveni o poveste fascianantă cu oameni reali, ca tine sau ca mine, ca familia sau colegii tăi, oameni care au trăit, creat, ridicat orașe și luptat în războaie cu cauze și consecințe ușor de înțeles, oameni care au ridicat imperii și civilizații și alții care le-au ruinat apoi? Pentru că istoria chiar asta e, o poveste fascinantă despre umanitate. Mai ales atunci când e explicată de copii pentru copii.
+          Ce modalitate mai bună de a înțelege prezentul în care trăim decât analizând trecutul? În cele trei sezoane de mai jos, elevii de la Școala Gimnazială din Sohatu, jud. Călărași, elevii de la Școala Gimnazială Heleșteni și Școala Gimnazială Oboroceni (jud. Iași) și elevii de la Școala Gimnazială Step by Step din București ne explică începuturile istoriei până în perioada timpurie a epocii moderne.
         </div>
         <div class="first-header-button-wrapper">
           <div class="first-header-button main">
@@ -44,6 +45,10 @@
               Sezonul III
             </v-expansion-panel-header>
             <v-expansion-panel-content>
+              <div class="first-content-description">
+                Cum putem explica din punct de vedere cultural, social, politic și religios Evul Mediu? Cum a ieșit umanitatea din această perioadă întunecată? Cum au descoperit europenii ca nu sunt centrul Pâmântului și ce consecințe a adus deschiderea lor către restul lumii? Ce s-a întâmplat când oamenii s-au întors la valorile Antichității și cum au înflorit artele ca urmare a acestei întoarceri? Care era principala formă de guvernământ la începutul epocii moderne? Și care a fost firul roșu care a legat toate aceste elemente între ele?
+                Faceți cunoștință cu Maria T., Miruna, Ruxi, Teofana, Ariana, Vlad, Gabi, Elisei, Maria Z., Dilara, Diana, Elena, Luiza, Norbert, Andrei, Matheas, Irina, Dimi, Lorena, Teodora, Darius, Corneliu și Paul, protagoniștii sezonului III.
+              </div>
               <VideoListPreview :is-mobile="isMobile()" :videos="videos3"/>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -210,9 +215,9 @@ export default {
           url: "./team/LetitiaStefanescu.jpg"
         },{
           id: 13,
-          name: 'Andreea',
+          name: 'Andreea Udrea',
           role: 'Asistent producție',
-          url: "./team/generic-person.png"
+          url: "./team/andreea_udrea_asistent_prod_3.jpeg"
         }
       ]
     }
