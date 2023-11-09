@@ -37,34 +37,7 @@
     <div class="first-content-bg">
       <div class="first-content-wrapper">
         <v-expansion-panels accordion multiple v-model="panelcontentvideos">
-          <v-expansion-panel expand elevation-0>
-            <div class="header-top-line"></div>
-            <v-expansion-panel-header>
-              Sezonul I
-            </v-expansion-panel-header>
-            <div class="first-content-description">
-              <!--          În prima serie de lecții video, copiii din Sohatu ne povestesc despre primii oameni, despre viața-->
-              <!--          cotidiană în Orientul Antic, despre meșteșugurile și credințele practicate atunci, despre felul în care-->
-              <!--          oamenii se organizau în grupuri sociale, despre construcțiile lor impresionante și despre legile-->
-              <!--          după care se guvernau. Care este cel mai vechi schelet uman descoperit de cercetători? Cine a-->
-              <!--          fost Ötzi? Ce este Turnul Babel? Ce sunt pagodele? Ce animale mumificau egiptenii? Cum au-->
-              <!--          evoluat oamenii în neolitic? Să începem cu începutul.-->
-              În cea de-a doua serie de lecții video, elevii din Sohatu ne povestesc câteva lucruri despre Antichitatea greacă și romană, despre viața cotidiană din polisul grec, despre ocupațiile și meșteșugurile vechilor greci, despre apetența lor pentru războaie dar și pentru artă și literatură, despre cel mai important eveniment socio-cultural din Grecia Antică, despre legendele grecești și adevărul din spatele lor și despre fondarea Romei, răspândirea marii civilizații romane în interiorul coloniilor, zei și cum au fost înlocuiți ei de către creștinism. Să începem.
-            </div>
-            <v-expansion-panel-content>
-              <VideoListPreview :is-mobile="isMobile()" :videos="videos1"/>
-            </v-expansion-panel-content>
 
-          </v-expansion-panel>
-          <v-expansion-panel expand elevation-0>
-            <div class="header-top-line"></div>
-            <v-expansion-panel-header>
-              Sezonul II
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <VideoListPreview :is-mobile="isMobile()" :videos="videos2"/>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
           <v-expansion-panel expand elevation-0>
             <div class="header-top-line"></div>
             <v-expansion-panel-header>
@@ -74,6 +47,36 @@
               <VideoListPreview :is-mobile="isMobile()" :videos="videos3"/>
             </v-expansion-panel-content>
           </v-expansion-panel>
+
+          <v-expansion-panel expand elevation-0>
+            <div class="header-top-line"></div>
+            <v-expansion-panel-header>
+              Sezonul II
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <VideoListPreview :is-mobile="isMobile()" :videos="videos2"/>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+
+          <v-expansion-panel expand elevation-0>
+            <div class="header-top-line"></div>
+            <v-expansion-panel-header>
+              Sezonul I
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <div class="first-content-description">
+                <!--          În prima serie de lecții video, copiii din Sohatu ne povestesc despre primii oameni, despre viața-->
+                <!--          cotidiană în Orientul Antic, despre meșteșugurile și credințele practicate atunci, despre felul în care-->
+                <!--          oamenii se organizau în grupuri sociale, despre construcțiile lor impresionante și despre legile-->
+                <!--          după care se guvernau. Care este cel mai vechi schelet uman descoperit de cercetători? Cine a-->
+                <!--          fost Ötzi? Ce este Turnul Babel? Ce sunt pagodele? Ce animale mumificau egiptenii? Cum au-->
+                <!--          evoluat oamenii în neolitic? Să începem cu începutul.-->
+                În cea de-a doua serie de lecții video, elevii din Sohatu ne povestesc câteva lucruri despre Antichitatea greacă și romană, despre viața cotidiană din polisul grec, despre ocupațiile și meșteșugurile vechilor greci, despre apetența lor pentru războaie dar și pentru artă și literatură, despre cel mai important eveniment socio-cultural din Grecia Antică, despre legendele grecești și adevărul din spatele lor și despre fondarea Romei, răspândirea marii civilizații romane în interiorul coloniilor, zei și cum au fost înlocuiți ei de către creștinism. Să începem.
+              </div>
+              <VideoListPreview :is-mobile="isMobile()" :videos="videos1"/>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+
         </v-expansion-panels>
       </div>
     </div>
@@ -459,7 +462,7 @@ export default {
   line-height: 21px;
   text-align: left;
   max-width: 540px;
-  margin: 40px 20px;
+  margin: 0px 20px 40px 20px;
 }
 
 .first-newsletter-wrapper {
@@ -597,7 +600,7 @@ export default {
 }
 
 .header-top-line {
-  margin: 0px 20px -10px 20px;
+  margin: 20px 20px -10px 20px;
   height: 1px;
   background-color: #1B2CC1;
 }
